@@ -1,1 +1,3 @@
-# open-cx-t7g1-last4
+# EasyShare
+
+EasyShare is an app created to manage an event's social networks and make sure they are all in sync.

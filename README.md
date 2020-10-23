@@ -26,21 +26,16 @@ Please contact us!
 
 Thank you!
 
-*team members names*
+*Guilherme Callasi*
+*Joana Ferreira*
+*José Macedo*
+*Marcelo Reis*
 
 ---
 
 ## Product Vision
-EasyShare is an app created to manage an event's social networks and make sure they are all in sync.
 
-**We favor a catchy and concise statement, ideally one sentence.**
-
-To learn more about how to write a good product vision, please see also:
-* [How To Create A Convincing Product Vision To Guide Your Team, by uxstudioteam.com](https://uxstudioteam.com/ux-blog/product-vision/)
-* [Product Management: Product Vision, by ProductPlan](https://www.productplan.com/glossary/product-vision/)
-* [Vision, by scrumbook.org](http://scrumbook.org/value-stream/vision.html)
-* [How to write a vision, by dummies.com](https://www.dummies.com/business/marketing/branding/how-to-write-vision-and-mission-statements-for-your-brand/)
-* [20 Inspiring Vision Statement Examples (2019 Updated), by lifehack.org](https://www.lifehack.org/articles/work/20-sample-vision-statement-for-the-new-startup.html)
+EasyShare is an app created to manage an event's social networks and make sure they are all in synchronized.
 
 ---
 ## Elevator Pitch
@@ -76,12 +71,29 @@ Briefly describe each use case mentioning the following:
 ### User stories
 This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
 
-For each theme, or role, you may add a small description. User stories should be detailed in the tool you decided to use for project management (e.g. trello or github projects).
-
-A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is 
-
 *As a < user role >, I want < goal > so that < reason >.*
 
+1. As a user, I want to register so that I have an account on the EasyShare app.
+  - **User interface mockups**.
+  - **Acceptance tests**.
+  - **Value and effort**.
+  
+2. As a user, I want to login so that I can access my personal account.
+  - **User interface mockups**.
+  - **Acceptance tests**.
+  - **Value and effort**.
+
+3. As a user, I want to logout so that I close my personal account.
+  - **User interface mockups**.
+  - **Acceptance tests**.
+  - **Value and effort**.
+
+4. As a user, I want to create a event so that I can manage it on the app.
+  - **User interface mockups**.
+  - **Acceptance tests**.
+  - **Value and effort**.
+  
+5. As a user, I want to change a event so that I can manage itn on the app.
 
 **INVEST in good user stories**. 
 You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).

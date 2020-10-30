@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 .gradle/
+pubspec.lock/
 /build/
 
 # Web related

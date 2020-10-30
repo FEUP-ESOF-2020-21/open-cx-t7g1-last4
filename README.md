@@ -57,18 +57,120 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ![UserCaseDiagram](./docs/user_case_diagram.png)
 
-Create a use-case diagram in UML with all high-level use cases possibly addressed by your module.
+#### Register:
+- Actor: Conference Owner
 
-Give each use case a concise, results-oriented name. Use cases should reflect the tasks the user needs to be able to accomplish using the system. Include an action verb and a noun. 
+- Description: To use the app and her functionalities, like saving all your events, creating new ones and share with the target audience, you must register before.
 
-Briefly describe each use case mentioning the following:
+- Preconditions and Postconditions: The user should not have any account (with the same username) saved in the application. After register, the user will have access to all app functionalities.
 
-* **Actor**. Name only the actor that will be initiating this use case, i.e. a person or other entity external to the software system being specified who interacts with the system and performs use cases to accomplish tasks. 
-* **Description**. Provide a brief description of the reason for and outcome of this use case, or a high-level description of the sequence of actions and the outcome of executing the use case. 
-* **Preconditions and Postconditions**. Include any activities that must take place, or any conditions that must be true, before the use case can be started (preconditions). Describe also the state of the system at the conclusion of the use case execution (postconditions). 
+- Normal Flow:
+1. User thinks about the pretended username and password.
+2. User insert the fields in their position and submit.
+3. The system verifies if the username and password are valid.
+4. The system saves the data from the user.
 
-* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions. 
+- Alternative Flows and Exceptions: If the verification process fails (3 point) the system will warn the user and request to input both fields again.   
+
+#### Login:
+- Actor: Conference Owner
+
+- Description: To access the app functionalities, presuming that you are already register and the account was logged out, you will need to log in with your username and password.
+
+- Preconditions and Postconditions: The user should have already an EasyShare account. After logging in, the user will have access to his account and app functionalities.
+
+- Normal Flow:
+1. User insert the fields in their position and submit.
+2. The system verifies if the username and password are valid.
+3. The system grants user access. 
+
+- Alternative Flows and Exceptions: If the verification process fails the system will warn the user and request to input both fields again.
+
+#### Logout:
+- Actor: Conference Owner
+
+- Description: In order to protect all the information within the account and be able to switch to another account at any time it’s important to have the logout functionality. 
+
+- Preconditions and Postconditions: The user must be logged in before trying to log out. After logging out, the user can now log in with other account or close the app knowing that their information is secure.
+
+- Normal Flow:
+1. User clicks the logout button.
+2. The system will redirect to login page.
+
+- Alternative Flows and Exceptions: In principle logout will never fail.
+
+#### Create an event:
+- Actor: Conference Owner
+
+- Description: For more event handling, we offer the functionality to create an event that will be saved for future use.
+
+- Preconditions and Postconditions: The user must be logged to create an event in the app. After creating an event, this will be available in his personal events for future updates.
+
+- Normal Flow:
+1. User logs in with their credentials.
+2. The system grants user access.
+3. User creates an event.
+4. The system will verify if all fields are acceptable.
+5. The system will add the created event to the list of personal events. 
+
+- Alternative Flows and Exceptions: If the verification step fails the system will warn the user and notify what fields are incorrect.
+
+#### Update an event:
+- Actor: Conference Owner
+
+- Description: In order to manage personal events with possible errors or with fields under discussion, we offer update functionality to be able to change events when necessary.
+
+- Preconditions and Postconditions: The user should have at least one event to use update functionality. After updating an event, it will be visible in personal events with the changes made. 
+
+- Normal Flow:
+1. User chooses which event to change.
+2. The system will redirect to other window where the user can make changes to events.
+3. User changes the pretended fields and submit.
+4. The system will verify if the fields submitted are correct.
+5. The system makes changes to the event.
+
+- Alternative Flows and Exceptions: If the verification step fails the system will warn the user and notify what fields are incorrect.
+
+#### Delete an event:
+- Actor: Conference Owner
+
+- Description: In cases where the user creates a wrong event or wants to remove events from his personal list, he can delete these events through the delete functionality.
+
+- Preconditions and Postconditions: The user should have at least one event to use delete functionality. After deleting an event, it will be removed from his personal events.
+
+- Normal Flow:
+1. User chooses which event to delete.
+2. The system will delete the event from the user account.
+
+- Alternative Flows and Exceptions: In principle the delete will never fail.
+
+#### See all personal Events:
+- Actor: Conference Owner
+
+- Description: If the user wants to see the status of personal events and their information, he can do it using this functionality.   
+
+- Preconditions and Postconditions: The user should have at least one event to use this functionality.
+
+- Normal Flow:
+1. User clicks in “See all persona Events”.
+2. The system will print all the information about all events. 
+
+- Alternative Flows and Exceptions:  In principle the print of all events will never fail.
+
+#### Sync. Events with social networks:
+- Actor: Conference Owner
+
+- Description: In order to facilitate the user’s work, the application will propagate the events   through the social networks that the user wants. This can be either automatic or manual.
+
+- Preconditions and Postconditions: The user must associate his social networks with EasyShare to start sharing his events. After sharing, the events must appear in user social networks.
+
+- Normal Flow:
+1. User set automatic sync.
+2. The system changes the way that propagate the events to automatic.
+3. User creates an event.
+4. The system will automatically share it on user social networks.
+
+- Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
 This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.

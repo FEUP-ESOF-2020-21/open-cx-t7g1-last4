@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ESOF',
+      debugShowCheckedModeBanner: false,
+      title: 'ESOF - EasyShare',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),

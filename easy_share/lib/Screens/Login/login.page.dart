@@ -1,6 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+
+  //guarda o email inserido pelo utilizador
+  final inputedEmail = TextEditingController();
+  //guarda a password inserida pelo utilizador
+  final inputedPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +33,7 @@ class LoginPage extends StatelessWidget {
               height: 80,
             ),
             TextFormField(
+              controller: inputedEmail,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   labelText: "E-mail",
@@ -41,6 +49,7 @@ class LoginPage extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
+              controller: inputedPassword,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
@@ -86,7 +95,10 @@ class LoginPage extends StatelessWidget {
                           fontSize: 15
                       ),
                     ),
-                    onPressed: (){},
+                    onPressed: () {
+                      /*Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => ();*/
+                    },
                   ),
                   FlatButton(
                     child: Text(

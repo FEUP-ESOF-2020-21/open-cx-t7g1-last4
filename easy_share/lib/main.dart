@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_share/Screens/Login/login.page.dart';
+import 'package:easy_share/Screens/Login/register.page.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => HomePage(),
         "/loginPage": (context) => LoginPage(),
+        "/registerPage": (context) => RegisterPage(),
         //"/agendAppMain": (context) => AgendAppMain()
       },
     );
@@ -87,7 +89,7 @@ class HomePage extends StatelessWidget {
                 width: 100,
                 height: 50,
                 child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context).pushNamed("/registerPage"),
                   color: Colors.deepOrange,
                   icon: Icon(
                     Icons.add_circle_outline

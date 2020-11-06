@@ -68,19 +68,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget buildTextField(String hintText) {
-    var icon;
-    switch (hintText) {
-      case "Username":
-        icon = Icon(Icons.account_circle);
-        break;
-      case "Email":
-        icon = Icon(Icons.email);
-        break;
-      case "Password":
-        icon = Icon(Icons.lock);
-        break;
-      default:
-    }
     return TextField(
       style: new TextStyle(color: Colors.black),
       decoration: InputDecoration(
@@ -93,7 +80,6 @@ class _RegisterPageState extends State<RegisterPage> {
         // border: OutlineInputBorder(
         //   borderRadius: BorderRadius.circular(20.0),
         // ),
-        prefixIcon: icon,
         suffixIcon: hintText == "Password"
             ? IconButton(
           onPressed: _toggleVisibility,

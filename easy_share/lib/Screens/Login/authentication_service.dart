@@ -29,3 +29,23 @@ class AuthenticationService {
   }
 
 }
+
+// classe que verifica se o email é válido
+class EmailValidator {
+  static String validate(String value){
+    if (value.isEmpty){
+      return "Email can't be empty";
+    }
+    return null;
+  }
+}
+
+// classe que verifica se a password é válida
+class PasswordValidator {
+  static String validate(String value){
+    if (value.isEmpty){
+      return "Password can't be empty";
+    }
+    return null;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "483438688931",
+    "firebase_url": "https://esof-easyshare.firebaseio.com",
+    "project_id": "esof-easyshare",
+    "storage_bucket": "esof-easyshare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483438688931:android:9223bd3e1a663457e21d16",
+        "android_client_info": {
+          "package_name": "com.last4.easy_share"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483438688931-sa8u9n6avj0mua6i4gkj5r5b31v9lert.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkKlEq4UvqcKqd9fMS-9hvRjLHRuLHxyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483438688931-sa8u9n6avj0mua6i4gkj5r5b31v9lert.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

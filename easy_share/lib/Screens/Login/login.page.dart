@@ -1,12 +1,31 @@
+import 'package:easy_share/Screens/Login/authentication_service.dart';
+import 'package:easy_share/Screens/Login/register.page.dart';
+import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 class LoginPage extends StatelessWidget {
 
   //guarda o email inserido pelo utilizador
-  final inputedEmail = TextEditingController();
+  final _email = TextEditingController();
   //guarda a password inserida pelo utilizador
-  final inputedPassword = TextEditingController();
+  final _password = TextEditingController();
+
+  // a partir dos dados introduzidos no email e password vai tentar ligar-se a base de dados
+  void submit(BuildContext context) async{
+    try{
+       String uid = await context.read<AuthenticationService>().logIn(
+          email: _email.text.trim(),
+          password: _password.text.trim());
+      print("Signed in with ID $uid");
+       Navigator.of(context).push(MaterialPageRoute(
+           builder: (BuildContext context) => HomePage()));
+    }catch (e){ //caso não seja possivel ligar a base de dados é lançada uma exceção
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +52,7 @@ class LoginPage extends StatelessWidget {
               height: 80,
             ),
             TextFormField(
-              controller: inputedEmail,
+              controller: _email,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   labelText: "E-mail",
@@ -49,7 +68,7 @@ class LoginPage extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
-              controller: inputedPassword,
+              controller: _password,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
@@ -72,7 +91,9 @@ class LoginPage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 ),
-                onPressed: () {} ,
+                onPressed: () {
+                    submit(context);
+                } ,
                 child: Text(
                   "Login",
                   style: TextStyle(
@@ -96,8 +117,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      /*Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => ();*/
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => RegisterPage()));
                     },
                   ),
                   FlatButton(

@@ -62,26 +62,26 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 - Description: To use the app and her functionalities, like saving all your events, creating new ones and share with the target audience, you must register before.
 
-- Preconditions and Postconditions: The user should not have any account (with the same username) saved in the application. After register, the user will have access to all app functionalities.
+- Preconditions and Postconditions: The user should not have any account (with the same email) saved in the application. After register, the user will have access to all app functionalities.
 
 - Normal Flow:
 1. User thinks about the pretended username and password.
 2. User insert the fields in their position and submit.
-3. The system verifies if the username and password are valid.
+3. The system verifies if the email, password and username are valid.
 4. The system saves the data from the user.
 
-- Alternative Flows and Exceptions: If the verification process fails (3 point) the system will warn the user and request to input both fields again.   
+- Alternative Flows and Exceptions: If the verification process fails (3 point) the system will warn the user and request to input all the fields again or the fields that are invalid.   
 
 #### Login:
 - Actor: Conference Owner
 
-- Description: To access the app functionalities, presuming that you are already register and the account was logged out, you will need to log in with your username and password.
+- Description: To access the app functionalities, presuming that you are already register and the account was logged out, you will need to log in with your email and password.
 
 - Preconditions and Postconditions: The user should have already an EasyShare account. After logging in, the user will have access to his account and app functionalities.
 
 - Normal Flow:
 1. User insert the fields in their position and submit.
-2. The system verifies if the username and password are valid.
+2. The system verifies if the email and password are valid.
 3. The system grants user access. 
 
 - Alternative Flows and Exceptions: If the verification process fails the system will warn the user and request to input both fields again.
@@ -95,7 +95,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 - Normal Flow:
 1. User clicks the logout button.
-2. The system will redirect to login page.
+2. The system will redirect to welcome page.
 
 - Alternative Flows and Exceptions: In principle logout will never fail.
 
@@ -134,7 +134,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 #### Delete an event:
 - Actor: Conference Owner
 
-- Description: In cases where the user creates a wrong event or wants to remove events from his personal list, he can delete these events through the delete functionality.
+- Description: In cases where the user creates a wrong event or wants to remove events from his personal list, he can delete those events through the delete functionality.
 
 - Preconditions and Postconditions: The user should have at least one event to use delete functionality. After deleting an event, it will be removed from his personal events.
 
@@ -178,9 +178,15 @@ This section will contain the requirements of the product described as **user st
 *As a < user role >, I want < goal > so that < reason >.*
 
 1. As a conference owner, I want to register so that I have an account on the EasyShare app.
-  - **User interface mockups**.
-  - **Acceptance tests**.
-  - **Value and effort**.
+  - **User interface mockups.**<br>
+  ![LoginMockup](./docs/UIMockups/login_mockup.png)
+  - **Acceptance tests.**
+    - When I try to login with the correct email and password, the system will grant access to my account
+    - When I try to login with the wrong email or password, the system will notify me with an error message.
+    - If I leave the fields empty and try to login then the system will notify me with an error message.
+  - **Value and effort.**
+    - Vaule: should have, but does not bring any value to customer.
+    - Effort to implement: S
   
 2. As a conference owner, I want to login so that I can access my personal account.
   - **User interface mockups**.

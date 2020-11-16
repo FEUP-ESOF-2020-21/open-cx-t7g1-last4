@@ -12,6 +12,11 @@ class AuthenticationService {
     await _firebaseAuth.signOut();
   }
 
+  //retorna o utilizador que está logado
+  Future getCurrentUser() async{
+    return _firebaseAuth.currentUser;
+  }
+
   //login com email e password
   Future <String> logIn({String email, String password}) async{
       final currentUser = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);

@@ -3,25 +3,33 @@ import 'package:easy_share/main.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
+import 'MainDrawer.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
-            children: [
-              Text("home page"),
-              RaisedButton(
-                onPressed: (){
-                  context.read<AuthenticationService>().signOut();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => WelcomePage()));
-                },
-                child: Text("SignOut"),
-              )
-            ],
-          )
+      appBar: AppBar(
+        title: Text("Home"),
+        centerTitle: true,
+        actions: <Widget> [
+          IconButton(
+            onPressed: (){},
+            icon: Icon(
+              Icons.sync,
+              color: Colors.white,
+            ),
+            iconSize: 30,
+          ),
+        ],
+      ),
+      drawer: MainDrawer(),
+      body: Center(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
       ),
     );
   }
 }
+

@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage>  {
         color: Colors.white,
         width: double.infinity,
         padding: EdgeInsets.only(
-          top:  60,
+          top: 60,
           left: 40,
           right: 40,
         ),

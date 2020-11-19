@@ -104,7 +104,6 @@ class WelcomePage extends StatelessWidget {
                       Navigator.of(context).pushNamed("/loginPage"),
                   icon: Icon(
                     Icons.account_circle_outlined,
-                    color: Colors.white,
                   ),
                   color: Colors.deepOrange,
                   shape: RoundedRectangleBorder(
@@ -113,10 +112,8 @@ class WelcomePage extends StatelessWidget {
                   label: Text(
                     "Login",
                     style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontFamily: "CaviarDreams",
-                        fontWeight: FontWeight.bold),
+                        fontSize: 25
+                    ),
                   ),
                 ),
               ),
@@ -131,7 +128,6 @@ class WelcomePage extends StatelessWidget {
                   color: Colors.deepOrange,
                   icon: Icon(
                     Icons.add_circle_outline,
-                    color: Colors.white,
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -140,9 +136,7 @@ class WelcomePage extends StatelessWidget {
                     "Signup",
                     style: TextStyle(
                         fontSize: 25,
-                        color: Colors.white,
-                        fontFamily: "CaviarDreams",
-                        fontWeight: FontWeight.bold),
+                      ),
                   ),
                 ),
               )

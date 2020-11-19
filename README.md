@@ -178,6 +178,11 @@ This section will contain the requirements of the product described as **user st
 *As a < user role >, I want < goal > so that < reason >.*
 
 1. As a conference owner, I want to register so that I have an account on the EasyShare app.
+  - **User interface mockups**.
+  - **Acceptance tests**.
+  - **Value and effort**.
+  
+2. As a conference owner, I want to login so that I can access my personal account.
   - **User interface mockups.**<br>
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests.**
@@ -187,12 +192,6 @@ This section will contain the requirements of the product described as **user st
   - **Value and effort.**
     - Vaule: should have, but does not bring any value to customer.
     - Effort to implement: S
-  
-2. As a conference owner, I want to login so that I can access my personal account.
-  - **User interface mockups**.
-  - **Acceptance tests**.
-  - **Value and effort**.
-
 3. As a conference owner, I want to logout so that I close my personal account.
   - **User interface mockups**.
   - **Acceptance tests**.

@@ -183,19 +183,34 @@ This section will contain the requirements of the product described as **user st
   - **Value and effort**.
   
 2. As a conference owner, I want to login so that I can access my personal account.
-  - **User interface mockups.**<br>
+  - **User interface mockups**.<br>
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
-  - **Acceptance tests.**
-    - When I try to login with the correct email and password, the system will grant access to my account
-    - When I try to login with the wrong email or password, the system will notify me with an error message.
-    - If I leave the fields empty and try to login then the system will notify me with an error message.
-  - **Value and effort.**
-    - Vaule: should have, but does not bring any value to customer.
+  - **Acceptance tests**.
+    - Scenario: I try to login corectly
+      - When I try to login with the correct email and password
+      - Then then system will grant access to my account
+    - Scenario: I try to login incorrectly
+      - When I try to login with the wrong email or password
+      - Then the system will notify me with an error message
+    - Scenario: I leave the login field empty
+      - When I leave the fields empty and try to login
+      - Then the system will notify me with an error message
+  - **Value and effort**.
+    - Value: should have, but does not bring any value to customer.
     - Effort to implement: S
 3. As a conference owner, I want to logout so that I close my personal account.
   - **User interface mockups**.
   - **Acceptance tests**.
+    - Scenario: I turn off the app
+        - Given I turn off the app 
+        - When I don't logout my account 
+        - Then when reopened, the account will be logged
+    - Scenario: I logout 
+        - When I logout my account 
+        - Then the system will close the connection with the customer account and redirect to welcome page
   - **Value and effort**.
+    - Value: should have, but does not bring any value to customer.
+    - Effort to implement: XS
 
 4. As a conference owner, I want to create an event so that I can manage it on the app.
   - **User interface mockups**.

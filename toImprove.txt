@@ -1,0 +1,9 @@
+Melhoramentos depois da revisão da 1º sprint:
+
+- estimação 
+
+- aceptance test 
+
+- DoD 
+
+- trabalhar nos assignees de cada um ⚠️

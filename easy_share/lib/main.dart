@@ -1,30 +1,65 @@
+import 'package:easy_share/Screens/Login/authentication_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_share/Screens/Login/login.page.dart';
+import 'package:easy_share/Screens/Login/register.page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+import 'Screens/home.page.dart';
+
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ESOF',
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-      ),
-      initialRoute: '/',
-      routes: {
-        "/": (context) => HomePage(),
-        "/loginPage": (context) => LoginPage(),
-        //"/agendAppMain": (context) => AgendAppMain()
-      },
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationService>(
+          create: (_)=> AuthenticationService(FirebaseAuth.instance),
+          ),
+        StreamProvider(
+          create: (context)=> context.read<AuthenticationService>().authStateChanges ,
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'ESOF - EasyShare',
+        theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+        ),
+        initialRoute: "/",
+        routes: {
+          "/": (context) => AuthenticationWrapper(),
+          "/loginPage": (context) => LoginPage(),
+          "/registerPage": (context) => RegisterPage(),
+        },
+      )
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+//classe que verifica se o utilizador se encontra logado, caso contrário vai para o WelcomePage
+class AuthenticationWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null){ // se firebaseUser == null então o conta do utilizador não está aberta
+      return HomePage();
+    }
+    return WelcomePage();
+  }
+}
+
+//classe que representa o ecrã incial quando o utilizador entra pela primeira vez na aplicação ou quando não está logado
+class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +127,7 @@ class HomePage extends StatelessWidget {
                 width: 100,
                 height: 50,
                 child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context).pushNamed("/registerPage"),
                   color: Colors.deepOrange,
                   icon: Icon(
                     Icons.add_circle_outline,

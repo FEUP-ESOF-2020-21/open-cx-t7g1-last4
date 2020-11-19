@@ -19,8 +19,8 @@ class AuthenticationService {
 
   //login com email e password
   Future <String> logIn({String email, String password}) async{
-      final currentUser = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      return _firebaseAuth.currentUser.uid;
+    await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    return _firebaseAuth.currentUser.uid;
   }
 
   //singup com email e password

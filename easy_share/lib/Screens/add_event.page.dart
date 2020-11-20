@@ -11,6 +11,7 @@ class AddEventPage extends StatefulWidget {
 class _AddEventState extends State<AddEventPage> {
   bool _isHidden = true;
   DateTime selectedDate;
+  bool isVirtual = false;
 
   void _toggleVisibility() {
     setState(() {
@@ -60,6 +61,7 @@ class _AddEventState extends State<AddEventPage> {
             SizedBox(
               height: 20.0,
             ),
+            buildLocationInputField(),
             SizedBox(height: 20.0),
             buildButtonContainer(),
           ],
@@ -77,6 +79,40 @@ class _AddEventState extends State<AddEventPage> {
         });
       },
       lastDate: DateTime(2020),
+    );
+  }
+
+  // Widget buildLocationInputField() {
+  //   return new Container(
+  //     child: new Row(
+  //       children: <Widget>[
+  //         new Checkbox(
+  //             value: isVirtual,
+  //             onChanged: (bool newValue) {
+  //               setState(() {
+  //                 isVirtual = newValue;
+  //               });
+  //             }),
+  //         new TextField(
+  //           decoration: InputDecoration(
+  //               border: InputBorder.none, hintText: 'Enter a search term'),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  Widget buildLocationInputField() {
+    return CheckboxListTile(
+      title: Text("This event will be virtual!"),
+      value: isVirtual,
+      onChanged: (val) {
+        setState(
+          () {
+            isVirtual = val;
+          },
+        );
+      },
     );
   }
 

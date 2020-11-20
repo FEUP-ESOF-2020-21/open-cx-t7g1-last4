@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'login.page.dart';
+import 'package:easy_share/Screens/Login/authentication_service.dart';
+import 'package:easy_share/Screens/home.page.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -9,6 +11,17 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool _isHidden = true;
+
+  //guarda o username inserido pelo utilizador
+  final _username = TextEditingController();
+  //guarda o email inserido pelo utilizador
+  final _email = TextEditingController();
+  //guarda a password inserida pelo utilizador
+  final _password = TextEditingController();
+  //chave para poder verificar o email e a password colocados
+  final formKey = GlobalKey<FormState>();
+  //string que vai conter a informação do erro obtido
+  String _error;
 
   void _toggleVisibility() {
     setState(() {
@@ -44,20 +57,61 @@ class _RegisterPageState extends State<RegisterPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 40.0,
-            ),
-            buildTextField("Email"),
-            SizedBox(
-              height: 20.0,
-            ),
-            buildTextField("Username"),
-            SizedBox(
-              height: 20.0,
-            ),
-            buildTextField("Password"),
-            SizedBox(
-              height: 30.0,
+
+
+            Form(
+              key: formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: _username,
+                    decoration: InputDecoration(
+                        labelText: "Username",
+                        labelStyle: TextStyle(
+                          color: Colors.black38,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                        )
+                    ),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    validator: EmailValidator.validate,
+                    controller: _email,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        labelText: "E-mail",
+                        labelStyle: TextStyle(
+                          color: Colors.black38,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                        )
+                    ),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    validator: PasswordValidator.validate,
+                    controller: _password,
+                    keyboardType: TextInputType.text,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        labelText: "Password",
+                        labelStyle: TextStyle(
+                          color: Colors.black38,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                        )
+                    ),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20.0),
             buildButtonContainer(),
@@ -108,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
           ),
-          onPressed: () {} ,
+          onPressed: () { submit(context);} ,
           child: Text(
             "Create account",
             style: TextStyle(
@@ -119,4 +173,36 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+
+  // a partir dos dados introduzidos no email e password vai tentar ligar-se a base de dados
+  void submit(BuildContext context) async{
+    if (validate()) {
+      try {
+        String uid = await context.read<AuthenticationService>().signUp(
+            email: _email.text.trim(),
+            username: _username.text.trim(),
+            password: _password.text.trim());
+        print("Signed up with ID $uid");
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => HomePage()));
+      } catch (e) { //caso não seja possivel ligar a base de dados é lançada uma exceção
+        setState(() {
+          _error = e.message;
+        });
+        print(e);
+      }
+    }
+  }
+
+  //função que verifica se os inputs do email e da password são validos
+  bool validate(){
+    final form = formKey.currentState;
+    if (form.validate()){
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+
 }

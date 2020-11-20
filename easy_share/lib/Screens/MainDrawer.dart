@@ -1,3 +1,4 @@
+import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
@@ -29,6 +30,11 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.home_outlined),
               title: Text("Home",style: TextStyle(fontSize: 18),),
+              onTap: (){
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => HomePage()));
+              },
             ),
             ListTile(
               leading: Icon(Icons.account_circle_outlined),
@@ -43,6 +49,7 @@ class MainDrawer extends StatelessWidget {
               title: Text("Logout",style: TextStyle(fontSize: 18),),
               onTap: (){
                 context.read<AuthenticationService>().signOut();
+                Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(
                 builder: (BuildContext context) => WelcomePage()));
               },

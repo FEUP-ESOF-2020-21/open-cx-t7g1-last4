@@ -10,7 +10,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Home",
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
         centerTitle: true,
         actions: <Widget> [
           IconButton(
@@ -24,7 +28,26 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: MainDrawer(),
-      body: Center(),
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 15, 0, 10),
+              child: Title(
+                color: Colors.black,
+                child:Text(
+                  "Upcoming Events",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ) ,
+                ),
+              ),
+            ),
+          ],
+        )
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
         child: Icon(Icons.add),

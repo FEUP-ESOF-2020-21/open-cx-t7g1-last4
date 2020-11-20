@@ -192,8 +192,7 @@ This section will contain the requirements of the product described as **user st
       - Then the system will notify me with an error message
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
-    - Effort to implement: S
-  <br><br>
+    - Effort to implement: S <br>
 **2. As a conference owner, I want to login so that I can access my personal account.**
   - **User interface mockups**.<br>
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
@@ -209,8 +208,7 @@ This section will contain the requirements of the product described as **user st
       - Then the system will notify me with an error message
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
-    - Effort to implement: S
-    <br><br>
+    - Effort to implement: S <br>
 **3. As a conference owner, I want to logout so that I close my personal account.**
   - **User interface mockups**.
   - **Acceptance tests**.
@@ -223,41 +221,35 @@ This section will contain the requirements of the product described as **user st
         - Then the system will close the connection with the customer account and redirect to welcome page
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
-    - Effort to implement: XS
-    <br><br>
+    - Effort to implement: XS <br>
 **4. As a conference owner, I want to create an event so that I can manage it on the app.**
   - **User interface mockups**.
   - **Acceptance tests**.
       - Scenario: I create an event successfuly
         - When I create an event, the button will say I have created an event.
-  - **Value and effort**.
-    <br><br>
+  - **Value and effort**. <br>
 **5. As a conference owner, I want to change an event so that I can update data.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
-<br><br>
+  - **Value and effort**. <br>
 **6. As a conference owner, I want to see a list of my events so that is easier to access them.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
-  <br><br>
+  - **Value and effort**. <br>
 **7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
-<br><br>
+  - **Value and effort**. <br>
 **8. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
-<br><br>
+  - **Value and effort**. <br>
 **9. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
-
-<br><br><br><br>
+  - **Value and effort**.<br>
+  
+<br>
 
 **INVEST in good user stories**. 
 You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).

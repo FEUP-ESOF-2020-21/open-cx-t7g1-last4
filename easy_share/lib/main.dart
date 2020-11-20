@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'Screens/home.page.dart';
-
+import 'Screens/add_event.page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,28 +20,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        Provider<AuthenticationService>(
-          create: (_)=> AuthenticationService(FirebaseAuth.instance),
+        providers: [
+          Provider<AuthenticationService>(
+            create: (_) => AuthenticationService(FirebaseAuth.instance),
           ),
-        StreamProvider(
-          create: (context)=> context.read<AuthenticationService>().authStateChanges ,
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'ESOF - EasyShare',
-        theme: ThemeData(
-          primarySwatch: Colors.deepOrange,
-        ),
-        initialRoute: "/",
-        routes: {
-          "/": (context) => AuthenticationWrapper(),
-          "/loginPage": (context) => LoginPage(),
-          "/registerPage": (context) => RegisterPage(),
-        },
-      )
-    );
+          StreamProvider(
+            create: (context) =>
+                context.read<AuthenticationService>().authStateChanges,
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'ESOF - EasyShare',
+          theme: ThemeData(
+            primarySwatch: Colors.deepOrange,
+          ),
+          initialRoute: "/",
+          routes: {
+            "/": (context) => AuthenticationWrapper(),
+            "/loginPage": (context) => LoginPage(),
+            "/registerPage": (context) => RegisterPage(),
+            "/addEventPage": (context) => AddEventPage(),
+          },
+        ));
   }
 }
 
@@ -51,7 +52,8 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
-    if (firebaseUser != null){ // se firebaseUser == null então o conta do utilizador não está aberta
+    if (firebaseUser != null) {
+      // se firebaseUser == null então o conta do utilizador não está aberta
       return HomePage();
     }
     return WelcomePage();
@@ -101,9 +103,7 @@ class WelcomePage extends StatelessWidget {
                 child: RaisedButton.icon(
                   onPressed: () =>
                       Navigator.of(context).pushNamed("/loginPage"),
-                  icon: Icon(
-                    Icons.account_circle_outlined
-                  ),
+                  icon: Icon(Icons.account_circle_outlined),
                   color: Colors.deepOrange,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -111,7 +111,7 @@ class WelcomePage extends StatelessWidget {
                   label: Text(
                     "Login",
                     style: TextStyle(
-                        fontSize: 25,
+                      fontSize: 25,
                     ),
                   ),
                 ),
@@ -123,7 +123,8 @@ class WelcomePage extends StatelessWidget {
                 width: 100,
                 height: 50,
                 child: RaisedButton.icon(
-                  onPressed: () => Navigator.of(context).pushNamed("/registerPage"),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed("/registerPage"),
                   color: Colors.deepOrange,
                   icon: Icon(
                     Icons.add_circle_outline,
@@ -133,9 +134,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                   label: Text(
                     "Signup",
-                    style: TextStyle(
-                        fontSize: 25
-                    ),
+                    style: TextStyle(fontSize: 25),
                   ),
                 ),
               )

@@ -15,6 +15,6 @@ void main() {
 //   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
 //     await tester.pumpWidget(AddEventPage());
 //     await tester.tap(find.byType(RaisedButton));
-//     expect(dind.text().buttonText, Text("Your event was added!"));
+//     expect(buttonText, Text("Your event was added!"));
 //   });
 }

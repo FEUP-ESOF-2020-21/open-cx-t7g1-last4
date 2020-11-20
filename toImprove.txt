@@ -1,8 +1,8 @@
 Melhoramentos depois da revisão da 1º sprint:
 
-- estimação 
+- alterar nome de user stories nos issues ( colocar a userstorie em vez de ex: Login)
 
-- aceptance test 
+- aceptance test : colocar given
 
 - DoD 
 

@@ -179,8 +179,20 @@ This section will contain the requirements of the product described as **user st
 
 1. As a conference owner, I want to register so that I have an account on the EasyShare app.
   - **User interface mockups**.
+  ![RegisterMockup](./docs/UIMockups/register_mockup.png)
   - **Acceptance tests**.
+    - Scenario: I try to register corectly
+      - When I try to register with the correct email and password
+      - Then then system will grant create my EasyShare account
+    - Scenario: I try to register incorrectly
+      - When I try to register with a not valid email
+      - Then the system will notify me with an error message
+    - Scenario: I leave the register field empty
+      - When I leave the fields empty and try to register
+      - Then the system will notify me with an error message
   - **Value and effort**.
+    - Value: should have, but does not bring any value to customer.
+    - Effort to implement: S
   
 2. As a conference owner, I want to login so that I can access my personal account.
   - **User interface mockups**.<br>

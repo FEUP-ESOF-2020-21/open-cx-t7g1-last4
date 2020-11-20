@@ -177,10 +177,10 @@ This section will contain the requirements of the product described as **user st
 
 *As a < user role >, I want < goal > so that < reason >.*
 
-1. As a conference owner, I want to register so that I have an account on the EasyShare app.
-  - **User interface mockups**.
+**1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
+  - *User interface mockups*.
   ![RegisterMockup](./docs/UIMockups/register_mockup.png)
-  - **Acceptance tests**.
+  - *Acceptance tests*.
     - Scenario: I try to register corectly
       - When I try to register with the correct email and password
       - Then then system will grant create my EasyShare account
@@ -190,7 +190,7 @@ This section will contain the requirements of the product described as **user st
     - Scenario: I leave the register field empty
       - When I leave the fields empty and try to register
       - Then the system will notify me with an error message
-  - **Value and effort**.
+  - *Value and effort*.
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: S
   

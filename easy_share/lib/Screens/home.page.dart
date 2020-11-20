@@ -2,6 +2,7 @@ import 'package:easy_share/Screens/Login/authentication_service.dart';
 import 'package:easy_share/main.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'add_event.page.dart';
 
 import 'MainDrawer.dart';
 
@@ -49,7 +50,10 @@ class HomePage extends StatelessWidget {
         )
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => AddEventPage()));
+        },
         child: Icon(Icons.add),
       ),
     );

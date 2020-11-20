@@ -63,7 +63,7 @@ class MainDrawer extends StatelessWidget {
     return Column(
         children: <Widget>[
           SizedBox(height: 40,),
-          Text("${snapshot.data.photoUrl}",
+          Text("${snapshot.data.displayName}",
           style: TextStyle(
             fontSize: 22,
           ) ,

@@ -32,7 +32,7 @@ class _AddEventState extends State<AddEventPage> {
               height: 25,
             ),
             Text(
-              'Add event',
+              'Add Event',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 50.0,

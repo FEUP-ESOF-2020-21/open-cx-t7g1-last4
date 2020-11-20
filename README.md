@@ -178,9 +178,9 @@ This section will contain the requirements of the product described as **user st
 *As a < user role >, I want < goal > so that < reason >.*
 
 **1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
-  - *User interface mockups*.
+  - **User interface mockups**.
   ![RegisterMockup](./docs/UIMockups/register_mockup.png)
-  - *Acceptance tests*.
+  - **Acceptance tests**.
     - Scenario: I try to register corectly
       - When I try to register with the correct email and password
       - Then then system will grant create my EasyShare account
@@ -190,11 +190,11 @@ This section will contain the requirements of the product described as **user st
     - Scenario: I leave the register field empty
       - When I leave the fields empty and try to register
       - Then the system will notify me with an error message
-  - *Value and effort*.
+  - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: S
   
-2. As a conference owner, I want to login so that I can access my personal account.
+**2. As a conference owner, I want to login so that I can access my personal account.**
   - **User interface mockups**.<br>
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests**.
@@ -210,7 +210,7 @@ This section will contain the requirements of the product described as **user st
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: S
-3. As a conference owner, I want to logout so that I close my personal account.
+**3. As a conference owner, I want to logout so that I close my personal account.**
   - **User interface mockups**.
   - **Acceptance tests**.
     - Scenario: I turn off the app
@@ -224,34 +224,34 @@ This section will contain the requirements of the product described as **user st
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: XS
 
-4. As a conference owner, I want to create an event so that I can manage it on the app.
+**4. As a conference owner, I want to create an event so that I can manage it on the app.**
   - **User interface mockups**.
   - **Acceptance tests**.
       - Scenario: I create an event successfuly
         - When I create an event, the button will say I have created an event.
   - **Value and effort**.
   
-5. As a conference owner, I want to change an event so that I can update data.
+**5. As a conference owner, I want to change an event so that I can update data.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-6. As a conference owner, I want to see a list of my events so that is easier to access them.
+**6. As a conference owner, I want to see a list of my events so that is easier to access them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
   
-7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.
+**7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-8. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.
+**8. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-9. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.
+**9. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.

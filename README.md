@@ -215,6 +215,8 @@ This section will contain the requirements of the product described as **user st
 4. As a conference owner, I want to create an event so that I can manage it on the app.
   - **User interface mockups**.
   - **Acceptance tests**.
+      - Scenario: I create an event successfuly
+        - When I create an event, the button will say I have created an event.
   - **Value and effort**.
   
 5. As a conference owner, I want to change an event so that I can update data.

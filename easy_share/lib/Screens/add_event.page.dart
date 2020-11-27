@@ -1,4 +1,5 @@
 import 'package:date_field/date_field.dart';
+import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/material.dart';
 
 import 'Login/login.page.dart';
@@ -136,6 +137,10 @@ class _AddEventState extends State<AddEventPage> {
               setState(() {
                 buttonText = Text("Your event was added!");
               });
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => HomePage()),
+              (route) => false);
             },
             child: buttonText),
       ),

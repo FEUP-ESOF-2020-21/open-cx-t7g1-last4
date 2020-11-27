@@ -156,10 +156,10 @@ class _LoginPageState extends State<LoginPage>  {
             email: _email.text.trim(),
             password: _password.text.trim());
         print("Signed in with ID $uid");
-        Navigator.of(context).pop(); // para remover o welcomePage
-        Navigator.of(context).pop(); // para remover o loginPage
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => HomePage()));
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => HomePage()),
+                (route) => false);
       } catch (e) { //caso não seja possivel ligar a base de dados é lançada uma exceção
         setState(() {
           _error = e.message;

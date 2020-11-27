@@ -31,9 +31,10 @@ class MainDrawer extends StatelessWidget {
               leading: Icon(Icons.home_outlined),
               title: Text("Home",style: TextStyle(fontSize: 18),),
               onTap: (){
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => HomePage()));
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => HomePage()),
+                        (route) => false);
               },
             ),
             ListTile(
@@ -49,9 +50,10 @@ class MainDrawer extends StatelessWidget {
               title: Text("Logout",style: TextStyle(fontSize: 18),),
               onTap: (){
                 context.read<AuthenticationService>().signOut();
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => WelcomePage()));
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => WelcomePage()),
+                        (route) => false);
               },
           ),
         ],

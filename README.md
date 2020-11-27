@@ -173,9 +173,6 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
-This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
-
-*As a < user role >, I want < goal > so that < reason >.*
 
 **1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
   - **User interface mockups**.<br>
@@ -242,33 +239,20 @@ This section will contain the requirements of the product described as **user st
   - **Acceptance tests**.
   - **Value and effort**. 
   
-**7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.**
+**7. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**. 
   
-**8. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.**
+**8. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**. 
   
-**9. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.**
+**9. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
-
-
-**INVEST in good user stories**. 
-You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).
-
-**User interface mockups**.
-After the user story text, you should add a draft of the corresponding user interfaces, a simple mockup or draft, if applicable.
-
-**Acceptance tests**.
-For each user story you should write also the acceptance tests (textually in Gherkin), i.e., a description of scenarios (situations) that will help to confirm that the system satisfies the requirements addressed by the user story.
-
-**Value and effort**.
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method) and the team should add an estimation of the effort to implement it, for example, using t-shirt sizes (XS, S, M, L, XL).
 
 ### Domain model
 

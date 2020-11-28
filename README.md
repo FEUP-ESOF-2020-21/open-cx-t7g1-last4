@@ -187,12 +187,15 @@ This section will contain the requirements of the product described as **user st
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests**.
     - Scenario: I try to login corectly
+      - Given I enter in to the login page  
       - When I try to login with the correct email and password
-      - Then then system will grant access to my account
+      - Then the system will grant access to my account
     - Scenario: I try to login incorrectly
+      - Given I enter in to the login page
       - When I try to login with the wrong email or password
       - Then the system will notify me with an error message
     - Scenario: I leave the login field empty
+      - Given I enter in to the login page
       - When I leave the fields empty and try to login
       - Then the system will notify me with an error message
   - **Value and effort**.
@@ -205,7 +208,8 @@ This section will contain the requirements of the product described as **user st
         - Given I turn off the app 
         - When I don't logout my account 
         - Then when reopened, the account will be logged
-    - Scenario: I logout 
+    - Scenario: I logout
+        - Given I want to close my app safely
         - When I logout my account 
         - Then the system will close the connection with the customer account and redirect to welcome page
   - **Value and effort**.

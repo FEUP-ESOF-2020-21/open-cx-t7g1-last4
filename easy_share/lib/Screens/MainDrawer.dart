@@ -6,6 +6,10 @@ import 'Login/authentication_service.dart';
 
 class MainDrawer extends StatelessWidget {
 
+  final _currentPage;
+
+  const MainDrawer(this._currentPage);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,10 +35,12 @@ class MainDrawer extends StatelessWidget {
               leading: Icon(Icons.home_outlined),
               title: Text("Home",style: TextStyle(fontSize: 18),),
               onTap: (){
-                Navigator.pushAndRemoveUntil(context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => HomePage()),
-                        (route) => false);
+                if (_currentPage != "Home Page") {
+                  Navigator.pushAndRemoveUntil(context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => HomePage()),
+                          (route) => false);
+                }
               },
             ),
             ListTile(

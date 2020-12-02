@@ -85,13 +85,12 @@ class HomePage extends StatelessWidget {
 
   Stream<QuerySnapshot> getUserEventsStreamSnapshot(BuildContext context) async*{
     final uid = await context.read<AuthenticationService>().getuid();
-    print(uid);
-    yield* FirebaseFirestore.instance.collection('userData').doc(uid).collection('events').snapshots();
+    yield* FirebaseFirestore.instance.collection('userData').doc(uid).collection('events').orderBy('Inicio').snapshots();
   }
 
   Widget buildEvents(BuildContext context,DocumentSnapshot document){
     final _now = DateTime.now();
-    //if (_now.isBefore(document['Fim'].toDate()) || (!document['Cancelado']) ) {
+    if (_now.isBefore(document['Fim'].toDate()) || (!document['Cancelado']) ) {
       return new Container(
         child: Card(
           child: Padding(
@@ -103,11 +102,17 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.event),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("  " + document['Nome'] + "  ",
-                          style: new TextStyle(fontSize: 30.0, color: Colors
-                              .black),),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        width: 200,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text("  " + document['Nome'] + "  ",
+                            style: new TextStyle(fontSize: 30.0, color: Colors.black),
+                            softWrap: false,
+                            overflow: TextOverflow.fade,
+                          ),
+                        ),
                       ),
                       Spacer(),
                       IconButton(
@@ -150,7 +155,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
-    //}
+    }
   }
 
   Widget isVirtual(bool virtual){

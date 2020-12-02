@@ -1,3 +1,4 @@
+import 'package:easy_share/Screens/EventsHandler/myEvents.dart';
 import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -50,6 +51,14 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.event),
               title: Text("MyEvents",style: TextStyle(fontSize: 18),),
+              onTap: (){
+                if (_currentPage != "MyEvents") {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyEvents()),);
+                }
+              },
             ),
             ListTile(
               leading: Icon(Icons.logout),

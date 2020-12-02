@@ -19,16 +19,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        actions: <Widget> [
-          IconButton(
-            onPressed: (){},
-            icon: Icon(
-              Icons.sync,
-              color: Colors.white,
-            ),
-            iconSize: 30,
-          ),
-        ],
       ),
       drawer: MainDrawer("Home Page"),
       body: Container(

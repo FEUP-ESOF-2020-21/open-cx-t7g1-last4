@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../MainDrawer.dart';
+import 'event.dart';
 
 class MyEvents extends StatelessWidget {
   @override
@@ -60,7 +61,11 @@ class MyEvents extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       width: 200,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Event(document)),);
+                        },
                         child: Text("  " + document['Nome'] + "  ",
                           style: new TextStyle(fontSize: 30.0, color: Colors.black),
                           softWrap: false,

@@ -1,4 +1,4 @@
-import 'package:easy_share/Screens/EventsHandler/myEvents.dart';
+import 'package:easy_share/Screens/EventsHandler/MyEvents.dart';
 import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

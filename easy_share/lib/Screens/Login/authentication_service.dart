@@ -23,6 +23,12 @@ class AuthenticationService {
     return _firebaseAuth.currentUser.uid;
   }
 
+  //login with Facebook
+  Future <String> logInFacebook({AuthCredential credential}) async{
+    await _firebaseAuth.signInWithCredential(credential);
+    return _firebaseAuth.currentUser.uid;
+  }
+
   //singup com email e password
   Future <String> signUp({String email, String username, String password}) async{
     await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
@@ -32,6 +38,8 @@ class AuthenticationService {
     _firebaseAuth.currentUser.reload();
     return _firebaseAuth.currentUser.uid;
   }
+
+
 
 }
 

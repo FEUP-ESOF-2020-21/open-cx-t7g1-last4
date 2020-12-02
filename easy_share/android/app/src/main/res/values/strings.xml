@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EasyShare</string>
+    <string name="facebook_app_id">739384050262739</string>
+    <string name="fb_login_protocol_scheme">fb739384050262739</string>
+</resources>

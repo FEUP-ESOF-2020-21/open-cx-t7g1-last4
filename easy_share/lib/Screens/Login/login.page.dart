@@ -5,21 +5,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>  {
-
+class _LoginPageState extends State<LoginPage> {
   //guarda o email inserido pelo utilizador
   final _email = TextEditingController();
+
   //guarda a password inserida pelo utilizador
   final _password = TextEditingController();
+
   //chave para poder verificar o email e a password colocados
   final formKey = GlobalKey<FormState>();
+
   //string que vai conter a informação do erro obtido
   String _error;
 
@@ -35,7 +38,7 @@ class _LoginPageState extends State<LoginPage>  {
           right: 40,
         ),
         child: ListView(
-          children: <Widget> [
+          children: <Widget>[
             SizedBox(
               width: 100,
               height: 100,
@@ -62,8 +65,7 @@ class _LoginPageState extends State<LoginPage>  {
                           color: Colors.black38,
                           fontWeight: FontWeight.w400,
                           fontSize: 20,
-                        )
-                    ),
+                        )),
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(
@@ -80,8 +82,7 @@ class _LoginPageState extends State<LoginPage>  {
                           color: Colors.black38,
                           fontWeight: FontWeight.w400,
                           fontSize: 20,
-                        )
-                    ),
+                        )),
                     style: TextStyle(fontSize: 20),
                   ),
                 ],
@@ -99,29 +100,34 @@ class _LoginPageState extends State<LoginPage>  {
                   borderRadius: BorderRadius.circular(18.0),
                 ),
                 onPressed: () {
-                    submit(context);
-                } ,
+                  submit(context);
+                },
                 child: Text(
                   "Login",
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
-              ) ,
+              ),
+            ),
+            SignInButton(Buttons.Facebook,
+                text: "Login with Facebook",
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                onPressed: () => submitFacebook(),
             ),
             Container(
               height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget> [
+                children: <Widget>[
                   FlatButton(
                     child: Text(
                       "Signup",
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontSize: 15
-                      ),
+                          decoration: TextDecoration.underline, fontSize: 15),
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -133,11 +139,9 @@ class _LoginPageState extends State<LoginPage>  {
                       "Recover Password",
                       textAlign: TextAlign.right,
                       style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontSize: 15
-                      ),
+                          decoration: TextDecoration.underline, fontSize: 15),
                     ),
-                    onPressed: (){},
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -149,18 +153,19 @@ class _LoginPageState extends State<LoginPage>  {
   }
 
   // a partir dos dados introduzidos no email e password vai tentar ligar-se a base de dados
-  void submit(BuildContext context) async{
+  void submit(BuildContext context) async {
     if (validate()) {
       try {
-        String uid = await context.read<AuthenticationService>().logIn(
-            email: _email.text.trim(),
-            password: _password.text.trim());
+        String uid = await context
+            .read<AuthenticationService>()
+            .logIn(email: _email.text.trim(), password: _password.text.trim());
         print("Signed in with ID $uid");
         Navigator.of(context).pop(); // para remover o welcomePage
         Navigator.of(context).pop(); // para remover o loginPage
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => HomePage()));
-      } catch (e) { //caso não seja possivel ligar a base de dados é lançada uma exceção
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+      } catch (e) {
+        //caso não seja possivel ligar a base de dados é lançada uma exceção
         setState(() {
           _error = e.message;
         });
@@ -169,10 +174,35 @@ class _LoginPageState extends State<LoginPage>  {
     }
   }
 
+  // Trigger when click to login with facebook
+  void submitFacebook() async {
+    final fb = FacebookLogin();
+    final uid = await fb.logIn(permissions: [
+      FacebookPermission.publicProfile,
+      FacebookPermission.email,
+    ]);
+    print(uid);
+    switch(uid.status){
+      case FacebookLoginStatus.Success:
+        print("Signed in with ID $uid");
+        Navigator.of(context).pop(); // para remover o welcomePage
+        Navigator.of(context).pop(); // para remover o loginPage
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+        break;
+      case FacebookLoginStatus.Cancel:
+        print("The user canceled the login");
+        break;
+      case FacebookLoginStatus.Error:
+        print("There was an Error");
+        break;
+    }
+  }
+
   //função que verifica se os inputs do email e da password são validos
-  bool validate(){
+  bool validate() {
     final form = formKey.currentState;
-    if (form.validate()){
+    if (form.validate()) {
       form.save();
       return true;
     }
@@ -181,7 +211,7 @@ class _LoginPageState extends State<LoginPage>  {
 
   //mostra um alerta com a mensagem do erro ocorrido
   Widget showAlert() {
-    if(_error != null){
+    if (_error != null) {
       return Container(
         color: Colors.amberAccent,
         width: double.infinity,
@@ -193,15 +223,16 @@ class _LoginPageState extends State<LoginPage>  {
               child: Icon(Icons.error_outline),
             ),
             Expanded(
-              child:AutoSizeText(_error,maxLines: 3,),
+              child: AutoSizeText(
+                _error,
+                maxLines: 3,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: Icon(
-                    Icons.close
-                ),
-                onPressed: (){
+                icon: Icon(Icons.close),
+                onPressed: () {
                   setState(() {
                     _error = null;
                   });
@@ -212,6 +243,8 @@ class _LoginPageState extends State<LoginPage>  {
         ),
       );
     }
-    return SizedBox(height: 0,);
+    return SizedBox(
+      height: 0,
+    );
   }
 }

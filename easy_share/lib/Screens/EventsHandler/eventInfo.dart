@@ -4,11 +4,11 @@ import 'package:intl/intl.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 
-class Event extends StatelessWidget {
+class EventInfo extends StatelessWidget {
 
   final DocumentSnapshot _document;
 
-  Event(this._document);
+  EventInfo(this._document);
 
   @override
   Widget build(BuildContext context) {

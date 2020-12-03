@@ -233,6 +233,10 @@ This section will contain the requirements of the product described as **user st
         - Given I want to see the upcoming events
         - When I enter in to Home Page
         - Then the system will display all my events chronologically ordered 
+     - Scenario: I want to see the details of the event
+        - Given I want to see the details of the event
+        - When I click in the name of the desired event
+        - Then the system will display all the details of the event
   - **Value and effort**.
     - Value: Must have.
     - Effort to implement: M

@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
 
   Widget buildEvents(BuildContext context,DocumentSnapshot document){
     final _now = DateTime.now();
-    if (_now.isBefore(document['Fim'].toDate()) || (!document['Cancelado']) ) {
+    if (_now.isBefore(document['Fim'].toDate()) ) {
       return new Container(
         child: Card(
           child: Padding(

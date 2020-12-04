@@ -1,3 +1,4 @@
+import 'package:easy_share/Screens/EventsHandler/MyEvents.dart';
 import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,10 @@ import '../main.dart';
 import 'Login/authentication_service.dart';
 
 class MainDrawer extends StatelessWidget {
+
+  final _currentPage;
+
+  const MainDrawer(this._currentPage);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +36,12 @@ class MainDrawer extends StatelessWidget {
               leading: Icon(Icons.home_outlined),
               title: Text("Home",style: TextStyle(fontSize: 18),),
               onTap: (){
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => HomePage()));
+                if (_currentPage != "Home Page") {
+                  Navigator.pushAndRemoveUntil(context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => HomePage()),
+                          (route) => false);
+                }
               },
             ),
             ListTile(
@@ -43,15 +51,24 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.event),
               title: Text("MyEvents",style: TextStyle(fontSize: 18),),
+              onTap: (){
+                if (_currentPage != "MyEvents") {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyEvents()),);
+                }
+              },
             ),
             ListTile(
               leading: Icon(Icons.logout),
               title: Text("Logout",style: TextStyle(fontSize: 18),),
               onTap: (){
                 context.read<AuthenticationService>().signOut();
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => WelcomePage()));
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => WelcomePage()),
+                        (route) => false);
               },
           ),
         ],
@@ -63,7 +80,7 @@ class MainDrawer extends StatelessWidget {
     return Column(
         children: <Widget>[
           SizedBox(height: 40,),
-          Text("${snapshot.data.photoUrl}",
+          Text("${snapshot.data.displayName}",
           style: TextStyle(
             fontSize: 22,
           ) ,

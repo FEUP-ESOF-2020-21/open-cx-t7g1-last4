@@ -17,6 +17,11 @@ class AuthenticationService {
     return _firebaseAuth.currentUser;
   }
 
+  //retorna o id do utilizador
+  Future getuid() async{
+    return _firebaseAuth.currentUser.uid;
+  }
+
   //login com email e password
   Future <String> logIn({String email, String password}) async{
     await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);

@@ -196,12 +196,15 @@ Start by contextualizing your module, describing the main concepts, terms, roles
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests**.
     - Scenario: I try to login corectly
+      - Given I enter in to the login page  
       - When I try to login with the correct email and password
-      - Then then system will grant access to my account
+      - Then the system will grant access to my account
     - Scenario: I try to login incorrectly
+      - Given I enter in to the login page
       - When I try to login with the wrong email or password
       - Then the system will notify me with an error message
     - Scenario: I leave the login field empty
+      - Given I enter in to the login page
       - When I leave the fields empty and try to login
       - Then the system will notify me with an error message
   - **Value and effort**.
@@ -215,7 +218,8 @@ Start by contextualizing your module, describing the main concepts, terms, roles
         - Given I turn off the app 
         - When I don't logout my account 
         - Then when reopened, the account will be logged
-    - Scenario: I logout 
+    - Scenario: I logout
+        - Given I want to close my app safely
         - When I logout my account 
         - Then the system will close the connection with the customer account and redirect to welcome page
   - **Value and effort**.
@@ -237,9 +241,22 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 **6. As a conference owner, I want to see a list of my events so that is easier to access them.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**. 
-  
-**7. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
+    - Scenario: I want to see my events
+        - Given I want to see my events
+        - When I enter in to MyEvents Page
+        - Then the system will display all my events chronologically ordered (recent to oldest)
+    - Scenario: I want to see the upcoming events
+        - Given I want to see the upcoming events
+        - When I enter in to Home Page
+        - Then the system will display all my events chronologically ordered 
+     - Scenario: I want to see the details of the event
+        - Given I want to see the details of the event
+        - When I click in the name of the desired event
+        - Then the system will display all the details of the event
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M
+7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**. 

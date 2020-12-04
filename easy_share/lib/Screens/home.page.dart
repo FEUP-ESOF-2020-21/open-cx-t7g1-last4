@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'EventsHandler/eventInfo.dart';
 import 'Login/authentication_service.dart';
 import 'add_event.page.dart';
 
@@ -96,7 +97,11 @@ class HomePage extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         width: 200,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => EventInfo(document)),);
+                          },
                           child: Text("  " + document['Nome'] + "  ",
                             style: new TextStyle(fontSize: 30.0, color: Colors.black),
                             softWrap: false,

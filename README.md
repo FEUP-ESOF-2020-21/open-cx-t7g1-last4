@@ -237,24 +237,32 @@ This section will contain the requirements of the product described as **user st
         - Given I want to see the upcoming events
         - When I enter in to Home Page
         - Then the system will display all my events chronologically ordered 
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M
+    
+7. As a conference owner, I want to select a specific event and see its details.
+  - **User interface mockups**.
+  - **Acceptance tests**.
      - Scenario: I want to see the details of the event
         - Given I want to see the details of the event
         - When I click in the name of the desired event
         - Then the system will display all the details of the event
   - **Value and effort**.
     - Value: Must have.
-    - Effort to implement: M
-7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.
+    - Effort to implement: S
+    
+8. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-8. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.
+9. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-9. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.
+10. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.

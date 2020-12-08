@@ -173,16 +173,25 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
-This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
 
-*As a < user role >, I want < goal > so that < reason >.*
-
-1. As a conference owner, I want to register so that I have an account on the EasyShare app.
-  - **User interface mockups**.
+**1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
+  - **User interface mockups**.<br>
+  ![RegisterMockup](./docs/UIMockups/register_mockup.png)
   - **Acceptance tests**.
+    - Scenario: I try to register corectly
+      - When I try to register with the correct email and password
+      - Then then system will grant create my EasyShare account
+    - Scenario: I try to register incorrectly
+      - When I try to register with a not valid email
+      - Then the system will notify me with an error message
+    - Scenario: I leave the register field empty
+      - When I leave the fields empty and try to register
+      - Then the system will notify me with an error message
   - **Value and effort**.
-  
-2. As a conference owner, I want to login so that I can access my personal account.
+    - Value: should have, but does not bring any value to customer.
+    - Effort to implement: S 
+    
+**2. As a conference owner, I want to login so that I can access my personal account.**
   - **User interface mockups**.<br>
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests**.
@@ -200,8 +209,9 @@ This section will contain the requirements of the product described as **user st
       - Then the system will notify me with an error message
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
-    - Effort to implement: S
-3. As a conference owner, I want to logout so that I close my personal account.
+    - Effort to implement: S 
+    
+**3. As a conference owner, I want to logout so that I close my personal account.**
   - **User interface mockups**.
   - **Acceptance tests**.
     - Scenario: I turn off the app
@@ -214,19 +224,21 @@ This section will contain the requirements of the product described as **user st
         - Then the system will close the connection with the customer account and redirect to welcome page
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
-    - Effort to implement: XS
-
-4. As a conference owner, I want to create an event so that I can manage it on the app.
+    - Effort to implement: XS 
+    
+**4. As a conference owner, I want to create an event so that I can manage it on the app.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
+      - Scenario: I create an event successfuly
+        - When I create an event, the button will say I have created an event.
+  - **Value and effort**. 
   
-5. As a conference owner, I want to change an event so that I can update data.
+**5. As a conference owner, I want to change an event so that I can update data.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**.
-
-6. As a conference owner, I want to see a list of my events so that is easier to access them.
+  - **Value and effort**. 
+  
+**6. As a conference owner, I want to see a list of my events so that is easier to access them.**
   - **User interface mockups**.
   - **Acceptance tests**.
     - Scenario: I want to see my events
@@ -237,41 +249,35 @@ This section will contain the requirements of the product described as **user st
         - Given I want to see the upcoming events
         - When I enter in to Home Page
         - Then the system will display all my events chronologically ordered 
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M
+    
+**7. As a conference owner, I want to select a specific event and see its details.**
+  - **User interface mockups**.
+  - **Acceptance tests**.
      - Scenario: I want to see the details of the event
         - Given I want to see the details of the event
         - When I click in the name of the desired event
         - Then the system will display all the details of the event
   - **Value and effort**.
     - Value: Must have.
-    - Effort to implement: M
-7. As a conference owner, I can associate EasyShare account with mysocial media accounts so that I can communicate between them.
+    - Effort to implement: S
+    
+**8. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-8. As a conference owner, I can automatically add an event on the desired social networks so that it will be syncronize.
+**9. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-9. As a conference owner, I can automatically update an event on the desired social networks so that data will be syncronize.
+**10. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
-
-
-
-**INVEST in good user stories**. 
-You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).
-
-**User interface mockups**.
-After the user story text, you should add a draft of the corresponding user interfaces, a simple mockup or draft, if applicable.
-
-**Acceptance tests**.
-For each user story you should write also the acceptance tests (textually in Gherkin), i.e., a description of scenarios (situations) that will help to confirm that the system satisfies the requirements addressed by the user story.
-
-**Value and effort**.
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method) and the team should add an estimation of the effort to implement it, for example, using t-shirt sizes (XS, S, M, L, XL).
 
 ### Domain model
 

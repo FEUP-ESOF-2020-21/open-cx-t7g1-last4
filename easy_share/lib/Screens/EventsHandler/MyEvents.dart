@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+
 
 import '../MainDrawer.dart';
 import 'eventInfo.dart';
@@ -53,23 +55,22 @@ class MyEvents extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+                padding: const EdgeInsets.only( bottom: 4.0),
                 child: Row(
                   children: <Widget>[
                     eventEnded(document),
                     Container(
                       alignment: Alignment.centerLeft,
-                      width: 200,
+                      width: 250,
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) => EventInfo(document)),);
                         },
-                        child: Text("  " + document['Nome'] + "  ",
+                        child: AutoSizeText(document['Nome'] + "  ",
+                          textAlign: TextAlign.start,
                           style: new TextStyle(fontSize: 30.0, color: Colors.black),
-                          softWrap: false,
-                          overflow: TextOverflow.fade,
                         ),
                       ),
                     ),

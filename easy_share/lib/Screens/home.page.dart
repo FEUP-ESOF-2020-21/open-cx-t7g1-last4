@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:intl/intl.dart';
 import 'EventsHandler/eventInfo.dart';
 import 'Login/authentication_service.dart';
 import 'add_event.page.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+
 
 import 'MainDrawer.dart';
 
@@ -80,8 +83,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildEvents(BuildContext context,DocumentSnapshot document){
-    final _now = DateTime.now();
-    if (_now.isBefore(document['Fim'].toDate()) ) {
+    atualizarEstadoEventos(document);
+    if( !document['Terminou']) {
       return new Container(
         child: Card(
           child: Padding(
@@ -102,10 +105,9 @@ class HomePage extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (BuildContext context) => EventInfo(document)),);
                           },
-                          child: Text("  " + document['Nome'] + "  ",
+                          child: AutoSizeText(document['Nome'] + "  ",
+                            textAlign: TextAlign.start,
                             style: new TextStyle(fontSize: 30.0, color: Colors.black),
-                            softWrap: false,
-                            overflow: TextOverflow.fade,
                           ),
                         ),
                       ),
@@ -130,7 +132,6 @@ class HomePage extends StatelessWidget {
                           .toString()} - ${DateFormat('dd/MM/yyyy | HH:mm')
                           .format(document['Fim'].toDate())
                           .toString()}", style: TextStyle(fontSize: 16),),
-                      Spacer(),
                     ],
                   ),
                 ),
@@ -141,7 +142,6 @@ class HomePage extends StatelessWidget {
                       Text("Location: " + document['Local'] + "  ",
                         style: TextStyle(fontSize: 16),),
                       isVirtual(document['Virtual']),
-                      Spacer(),
                     ],
                   ),
                 )
@@ -150,6 +150,8 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
+    }else{
+      return Container();
     }
   }
 
@@ -157,6 +159,16 @@ class HomePage extends StatelessWidget {
     if (virtual)
       return Icon(Icons.wifi,size: 20,);
     return Icon(Icons.wifi_off,size: 20,);
+  }
+
+  void atualizarEstadoEventos(DocumentSnapshot document) {
+    final _now = DateTime.now();
+    if ( ((document['Fim'].toDate()).isBefore(_now)) && (!document['Terminou']) ){
+      Map<String,Object> map = new HashMap<String,Object>();
+      map.putIfAbsent("Terminou", () => true);
+      document.reference.update(map);
+    }
+    return;
   }
 
 }

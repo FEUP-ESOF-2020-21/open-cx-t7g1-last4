@@ -236,7 +236,25 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 **5. As a conference owner, I want to change an event so that I can update data.**
   - **User interface mockups**.
   - **Acceptance tests**.
-  - **Value and effort**. 
+    - Scenario: I want to edit an specified event
+        - Given I want to edit an specified event
+        - When I click in the button that grants me access to editEvent page
+        - Then the system will display all the event information that can be modified 
+    - Scenario: I try to edit an event incorrectly
+        - Given I try to edit an event with incorrect data
+        - When I click in the button that saves all the changes made
+        - Then the system will warn me with a clear error message
+    - Scenario: I select the start date or the end date incorrectly
+        - Given I select a start date for the event
+        - When I select an end date that is before than start date
+        - Then the system will warm me with an error message
+    - Scenario: I dont want to save the changed informations
+        - Given I unintentionally change an event field 
+        - When I click in "Cancel Edit" button 
+        - Then the previous changes made will not be saved  
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M
   
 **6. As a conference owner, I want to see a list of my events so that is easier to access them.**
   - **User interface mockups**.

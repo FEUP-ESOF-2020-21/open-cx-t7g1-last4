@@ -173,6 +173,8 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
+#### User stories map
+  ![UserStoriesMap](./docs/UIMockups/user_map.png)
 
 **1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
   - **User interface mockups**.<br>

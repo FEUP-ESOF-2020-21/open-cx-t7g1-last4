@@ -174,7 +174,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### User stories
 #### User stories map
-  ![UserStoriesMap](./docs/UIMockups/user_map.png)
+  ![UserStoriesMap](./docs/user_map.png)
 
 **1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
   - **User interface mockups**.<br>

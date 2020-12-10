@@ -61,7 +61,7 @@ class MyEvents extends StatelessWidget {
                     eventEnded(document),
                     Container(
                       alignment: Alignment.centerLeft,
-                      width: 250,
+                      width: 325,
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(context,
@@ -70,7 +70,7 @@ class MyEvents extends StatelessWidget {
                         },
                         child: AutoSizeText(document['Nome'] + "  ",
                           textAlign: TextAlign.start,
-                          style: new TextStyle(fontSize: 30.0, color: Colors.black),
+                          style: new TextStyle(fontSize: 25.0, color: Colors.black),
                         ),
                       ),
                     ),

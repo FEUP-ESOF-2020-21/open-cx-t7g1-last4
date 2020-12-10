@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:easy_share/Screens/EventsHandler/editEvent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            ListEvents(context),
+            listEvents(context),
           ],
         )
       ),
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
   }
 
 
-  Widget ListEvents(BuildContext context){
+  Widget listEvents(BuildContext context){
     return Container(
       child: StreamBuilder(
         stream: getUserEventsStreamSnapshot(context),
@@ -98,7 +99,7 @@ class HomePage extends StatelessWidget {
                       Icon(Icons.event),
                       Container(
                         alignment: Alignment.centerLeft,
-                        width: 200,
+                        width: 230,
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(context,
@@ -107,14 +108,19 @@ class HomePage extends StatelessWidget {
                           },
                           child: AutoSizeText(document['Nome'] + "  ",
                             textAlign: TextAlign.start,
-                            style: new TextStyle(fontSize: 30.0, color: Colors.black),
+                            style: new TextStyle(fontSize: 25.0, color: Colors.black),
                           ),
                         ),
                       ),
                       Spacer(),
                       IconButton(
                         icon: Icon(Icons.edit, color: Colors.grey,),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => UpdateEvent(document)),
+                                  (route) => false);
+                        },
                       ),
                       IconButton(
                         icon: Icon(Icons.highlight_remove, color: Colors.red,),

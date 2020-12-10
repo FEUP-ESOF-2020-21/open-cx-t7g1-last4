@@ -179,12 +179,15 @@ Start by contextualizing your module, describing the main concepts, terms, roles
   ![RegisterMockup](./docs/UIMockups/register_mockup.png)
   - **Acceptance tests**.
     - Scenario: I try to register corectly
+      - Given I enter in to the register page  
       - When I try to register with the correct email and password
       - Then then system will grant create my EasyShare account
     - Scenario: I try to register incorrectly
+      - Given I enter in to the register page 
       - When I try to register with a not valid email
       - Then the system will notify me with an error message
     - Scenario: I leave the register field empty
+      - Given I enter in to the register page 
       - When I leave the fields empty and try to register
       - Then the system will notify me with an error message
   - **Value and effort**.
@@ -299,6 +302,8 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Domain model
 
+![Domain Model](./docs/DB_UML.png)
+
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
 ---
@@ -313,6 +318,9 @@ To document the architecture requires describing the decomposition of the system
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
+
+![Logical Architecture](./docs/logical_architecture.jpg)
+
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
 It can be beneficial to present the system both in a horizontal or vertical decomposition:
@@ -320,6 +328,9 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
 ### Physical architecture
+
+![Physical Architecture](./docs/physical _architecture.png)
+
 The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
 It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).

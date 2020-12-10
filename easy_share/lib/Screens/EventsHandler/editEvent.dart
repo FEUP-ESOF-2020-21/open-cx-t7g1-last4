@@ -47,6 +47,7 @@ class _UpdateEventState extends State<UpdateEvent> {
           right: 40,
         ),
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: <Widget>[
             Text(
               'Edit Event',
@@ -91,7 +92,6 @@ class _UpdateEventState extends State<UpdateEvent> {
                     onSaved: (text){
                       _location = text;
                     },
-
                     initialValue: widget._event['Local'],
                     keyboardType: TextInputType.text,
                     style: TextStyle(
@@ -173,7 +173,7 @@ class _UpdateEventState extends State<UpdateEvent> {
                       _description = text;
                     },
                     initialValue: widget._event['Descricao'],
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.multiline,
                     maxLines: 4,
                     style: TextStyle(
                         fontSize: 20

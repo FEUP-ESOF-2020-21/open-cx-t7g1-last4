@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'EventsHandler/eventInfo.dart';
 import 'Login/authentication_service.dart';
-import 'add_event.page.dart';
+import 'EventsHandler/add_event.page.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 
@@ -66,12 +66,15 @@ class HomePage extends StatelessWidget {
           if (!snapshot.hasData){
             return const Text("Loading...");
           }
-          return new ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: snapshot.data.documents.length,
-            itemBuilder: (BuildContext context,int index) =>
-                buildEvents(context,snapshot.data.documents[index])
+          return new Expanded(
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (BuildContext context,int index) =>
+                    buildEvents(context,snapshot.data.documents[index])
+              ),
           );
         } ,
       ),

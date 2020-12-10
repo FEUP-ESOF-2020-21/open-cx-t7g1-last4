@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:easy_share/main.dart';
-import 'package:easy_share/Screens/add_event.page.dart';
+import 'file:///D:/Universidade/3%20Ano/1%20semestre/ESOF/open-cx-t7g1-last4/easy_share/lib/Screens/EventsHandler/add_event.page.dart';
 
 void main() {
 //   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

@@ -30,6 +30,7 @@ class MyEvents extends StatelessWidget {
               return const Text("Loading...");
             }
             return new ListView.builder(
+                physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: snapshot.data.documents.length,

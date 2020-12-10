@@ -173,23 +173,31 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
+#### User stories map
+  ![UserStoriesMap](./docs/UIMockups/user_map.png)
 
 **1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
   - **User interface mockups**.<br>
   ![RegisterMockup](./docs/UIMockups/register_mockup.png)
   - **Acceptance tests**.
-    - Scenario: I try to register corectly
-      - Given I enter in to the register page  
-      - When I try to register with the correct email and password
-      - Then then system will grant create my EasyShare account
-    - Scenario: I try to register incorrectly
-      - Given I enter in to the register page 
-      - When I try to register with a not valid email
-      - Then the system will notify me with an error message
-    - Scenario: I leave the register field empty
-      - Given I enter in to the register page 
-      - When I leave the fields empty and try to register
-      - Then the system will notify me with an error message
+```gherkin
+Scenario: I try to register corectly
+  Given I enter in to the register page  
+  When I try to register with the correct email and password
+  Then then system will grant create my EasyShare account
+```
+```gherkin
+Scenario: I try to register incorrectly
+  Given I enter in to the register page 
+  When I try to register with a not valid email
+  Then the system will notify me with an error message
+```
+```gherkin
+Scenario: I leave the register field empty
+  Given I enter in to the register page 
+  When I leave the fields empty and try to register
+  Then the system will notify me with an error message
+```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: S 
@@ -198,18 +206,24 @@ Start by contextualizing your module, describing the main concepts, terms, roles
   - **User interface mockups**.<br>
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests**.
-    - Scenario: I try to login corectly
-      - Given I enter in to the login page  
-      - When I try to login with the correct email and password
-      - Then the system will grant access to my account
-    - Scenario: I try to login incorrectly
-      - Given I enter in to the login page
-      - When I try to login with the wrong email or password
-      - Then the system will notify me with an error message
-    - Scenario: I leave the login field empty
-      - Given I enter in to the login page
-      - When I leave the fields empty and try to login
-      - Then the system will notify me with an error message
+```gherkin
+Scenario: I try to login corectly
+  Given I enter in to the login page  
+  When I try to login with the correct email and password
+  Then the system will grant access to my account
+```
+```gherkin
+Scenario: I try to login incorrectly
+  Given I enter in to the login page
+  When I try to login with the wrong email or password
+  Then the system will notify me with an error message
+```
+```gherkin
+Scenario: I leave the login field empty
+  Given I enter in to the login page
+  When I leave the fields empty and try to login
+  Then the system will notify me with an error message
+```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: S 
@@ -217,14 +231,18 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 **3. As a conference owner, I want to logout so that I close my personal account.**
   - **User interface mockups**.
   - **Acceptance tests**.
-    - Scenario: I turn off the app
-        - Given I turn off the app 
-        - When I don't logout my account 
-        - Then when reopened, the account will be logged
-    - Scenario: I logout
-        - Given I want to close my app safely
-        - When I logout my account 
-        - Then the system will close the connection with the customer account and redirect to welcome page
+```gherkin
+Scenario: I turn off the app
+  Given I turn off the app 
+  When I don't logout my account 
+  Then when reopened, the account will be logged
+```
+```gherkin
+Scenario: I logout
+  Given I want to close my app safely
+  When I logout my account 
+  Then the system will close the connection with the customer account and redirect to welcome page
+```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
     - Effort to implement: XS 
@@ -232,79 +250,118 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 **4. As a conference owner, I want to create an event so that I can manage it on the app.**
   - **User interface mockups**.
   - **Acceptance tests**.
-      - Scenario: I create an event successfuly
-        - When I create an event, the button will say I have created an event.
-  - **Value and effort**. 
+```gherkin
+Scenario: I create an event successfuly
+  Given I create an event successfuly
+  When I create an event, the button will say I have created an event.
+  Then the event is created and added to the database.
+```
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M 
   
 **5. As a conference owner, I want to change an event so that I can update data.**
   - **User interface mockups**.
   - **Acceptance tests**.
-    - Scenario: I want to edit an specified event
-        - Given I want to edit an specified event
-        - When I click in the button that grants me access to editEvent page
-        - Then the system will display all the event information that can be modified 
-    - Scenario: I try to edit an event incorrectly
-        - Given I try to edit an event with incorrect data
-        - When I click in the button that saves all the changes made
-        - Then the system will warn me with a clear error message
-    - Scenario: I select the start date or the end date incorrectly
-        - Given I select a start date for the event
-        - When I select an end date that is before than start date
-        - Then the system will warm me with an error message
-    - Scenario: I dont want to save the changed informations
-        - Given I unintentionally change an event field 
-        - When I click in "Cancel Edit" button 
-        - Then the previous changes made will not be saved  
+```gherkin
+Scenario: I want to edit an specified event
+  Given I want to edit an specified event
+  When I click in the button that grants me access to editEvent page
+  Then the system will display all the event information that can be modified 
+```
+```gherkin
+Scenario: I try to edit an event incorrectly
+  Given I try to edit an event with incorrect data
+  When I click in the button that saves all the changes made
+  Then the system will warn me with a clear error message
+```
+```gherkin
+Scenario: I select the start date or the end date incorrectly
+  Given I select a start date for the event
+  When I select an end date that is before than start date
+  Then the system will warm me with an error message
+```
+```gherkin
+Scenario: I dont want to save the changed informations
+  Given I unintentionally change an event field 
+  When I click in "Cancel Edit" button 
+  Then the previous changes made will not be saved  
+```
   - **Value and effort**.
     - Value: Must have.
     - Effort to implement: M
-  
-**6. As a conference owner, I want to see a list of my events so that is easier to access them.**
+
+**6. As a conference owner, I want to delete an event so that It doesn't appear on the app.**
   - **User interface mockups**.
   - **Acceptance tests**.
-    - Scenario: I want to see my events
-        - Given I want to see my events
-        - When I enter in to MyEvents Page
-        - Then the system will display all my events chronologically ordered (recent to oldest)
-    - Scenario: I want to see the upcoming events
-        - Given I want to see the upcoming events
-        - When I enter in to Home Page
-        - Then the system will display all my events chronologically ordered 
+```gherkin
+Scenario: I delete an event successfuly
+  Given I delete an event successfuly
+  When I delete an event, the button will say I have deleted an event.
+  Then the event is deelted and removed from the database.
+```
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M 
+   
+**7. As a conference owner, I want to see a list of my events so that is easier to access them.**
+  - **User interface mockups**.
+  - **Acceptance tests**.
+```gherkin
+Scenario: I want to see my events
+  Given I want to see my events
+  When I enter in to MyEvents Page
+  Then the system will display all my events chronologically ordered (recent to oldest)
+```
+```gherkin
+Scenario: I want to see the upcoming events
+  Given I want to see the upcoming events
+  When I enter in to Home Page
+  Then the system will display all my events chronologically ordered 
+```
   - **Value and effort**.
     - Value: Must have.
     - Effort to implement: M
     
-**7. As a conference owner, I want to select a specific event and see its details.**
+**8. As a conference owner, I want to select a specific event and see its details.**
   - **User interface mockups**.
   - **Acceptance tests**.
-     - Scenario: I want to see the details of the event
-        - Given I want to see the details of the event
-        - When I click in the name of the desired event
-        - Then the system will display all the details of the event
+```gherkin
+Scenario: I want to see the details of the event
+  Given I want to see the details of the event
+  When I click in the name of the desired event
+  Then the system will display all the details of the event
+```
   - **Value and effort**.
     - Value: Must have.
     - Effort to implement: S
     
-**8. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
+**9. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**9. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
+**10. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**10. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
+**11. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
+  
+**12. As a conference owner,  I can automatically delete an event on facebook so that data will be syncronize.**
+  - **User interface mockups**.
+  - **Acceptance tests**.
+  - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M 
 
 ### Domain model
+To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
 ![Domain Model](./docs/DB_UML.png)
-
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
 ---
 
@@ -318,22 +375,18 @@ To document the architecture requires describing the decomposition of the system
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
+The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages.
 
 ![Logical Architecture](./docs/logical_architecture.jpg)
 
-The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
-
-It can be beneficial to present the system both in a horizontal or vertical decomposition:
-* horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
-* vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
+EasyShare high-level logical structure follows the Layered Architecture Pattern.
 
 ### Physical architecture
+The goal of this subsection is to document the high-level physical structure of the software system, showing the physical structure of the system.
 
-![Physical Architecture](./docs/physical _architecture.png)
+![Physical Architecture](./docs/physical_architecture.png)
 
-The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
-
-It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+The main technologie considered was Flutter for the mobile UI combined with Firebase to store all the data.
 
 ### Prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.

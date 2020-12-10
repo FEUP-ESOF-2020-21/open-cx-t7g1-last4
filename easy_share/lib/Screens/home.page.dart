@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:easy_share/Screens/EventsHandler/deleteEvent.dart';
 import 'package:easy_share/Screens/EventsHandler/editEvent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import 'MainDrawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +64,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
 
   Widget listEvents(BuildContext context){
     return Container(
@@ -127,7 +134,11 @@ class HomePage extends StatelessWidget {
                       ),
                       IconButton(
                         icon: Icon(Icons.highlight_remove, color: Colors.red,),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            deleteAlert(context,document);
+                          });
+                        },
                       )
                     ],
                   ),
@@ -180,5 +191,11 @@ class HomePage extends StatelessWidget {
     return;
   }
 
+  Future<Widget> deleteAlert(BuildContext context, DocumentSnapshot event) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context)=> DeleteEvent(event).build(context)
+      );
+  }
 }
 

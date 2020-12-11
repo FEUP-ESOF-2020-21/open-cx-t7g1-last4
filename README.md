@@ -35,7 +35,8 @@ Thank you!
 
 ## Product Vision
 
-EasyShare is an app created to manage an event's social networks and make sure they are all in synchronized.
+EasyShare is an app created to manage an event's social networks and make sure they are all in synchronized. <br>
+The app allows the user to manage his events and don't worry about posting updates on social networks.
 
 ---
 ## Elevator Pitch

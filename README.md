@@ -26,9 +26,9 @@ Please contact us!
 
 Thank you!
 
-*Guilherme Callasi*
-*Joana Ferreira*
-*José Macedo*
+*Guilherme Callasi,*
+*Joana Ferreira,*
+*José Macedo,*
 *Marcelo Reis*
 
 ---

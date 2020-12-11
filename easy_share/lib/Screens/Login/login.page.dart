@@ -1,12 +1,11 @@
 import 'package:easy_share/Screens/Login/authentication_service.dart';
+import 'package:easy_share/Screens/Login/login_facebook.page.dart';
 import 'package:easy_share/Screens/Login/register.page.dart';
 import 'package:easy_share/Screens/home.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -110,13 +109,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            SignInButton(Buttons.Facebook,
-                text: "Login with Facebook",
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                onPressed: () => submitFacebook(),
-            ),
             Container(
               height: 60,
               child: Row(
@@ -171,31 +163,6 @@ class _LoginPageState extends State<LoginPage> {
         });
         print(e);
       }
-    }
-  }
-
-  // Trigger when click to login with facebook
-  void submitFacebook() async {
-    final fb = FacebookLogin();
-    final uid = await fb.logIn(permissions: [
-      FacebookPermission.publicProfile,
-      FacebookPermission.email,
-    ]);
-    print(uid);
-    switch(uid.status){
-      case FacebookLoginStatus.Success:
-        print("Signed in with ID $uid");
-        Navigator.of(context).pop(); // para remover o welcomePage
-        Navigator.of(context).pop(); // para remover o loginPage
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
-        break;
-      case FacebookLoginStatus.Cancel:
-        print("The user canceled the login");
-        break;
-      case FacebookLoginStatus.Error:
-        print("There was an Error");
-        break;
     }
   }
 

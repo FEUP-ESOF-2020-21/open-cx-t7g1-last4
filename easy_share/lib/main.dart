@@ -2,6 +2,7 @@ import 'package:easy_share/Screens/Login/authentication_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_share/Screens/Login/login.page.dart';
+import 'package:easy_share/Screens/Login/login_facebook.page.dart';
 import 'package:easy_share/Screens/Login/register.page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           routes: {
             "/": (context) => AuthenticationWrapper(),
             "/loginPage": (context) => LoginPage(),
+            "/loginFacebookPage": (context) => LoginFacebookPage(),
             "/registerPage": (context) => RegisterPage(),
             "/addEventPage": (context) => AddEventPage(),
           },

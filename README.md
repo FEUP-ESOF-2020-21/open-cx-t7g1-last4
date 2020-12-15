@@ -40,10 +40,10 @@ The app allows the user to manage his events and don't worry about posting updat
 
 ---
 ## Elevator Pitch
-Have you ever updated an event and forgot to post a update on a certain social network?
-Our name is EasyShare, a app that is made for event owners that allows them to save time and keep track on event social media.
-Unlike other applications for managing events, our goal is that our app is the place where the user controls the status of events on different social networks.
-Now is **Easy to Share**, download and start saving time.
+Have you ever updated an event and forgot to post a update on a certain social network?<br>
+Our name is EasyShare, a app that is made for event owners that allows them to save time and keep track on event social media.<br>
+Unlike other applications for managing events, our goal is that our app is the place where the user controls the status of events on different social networks.<br>
+Now is **Easy to Share**, download and start saving time.<br>
 
 ---
 ## Requirements

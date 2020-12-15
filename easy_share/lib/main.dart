@@ -18,6 +18,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  bool _isLoggedInFacebook = false;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

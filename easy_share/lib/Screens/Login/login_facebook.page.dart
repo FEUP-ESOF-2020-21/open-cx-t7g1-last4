@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+import 'package:easy_share/main.dart';
 import '../MainDrawer.dart';
 
 class LoginFacebookPage extends StatefulWidget {
@@ -15,15 +16,6 @@ class LoginFacebookPage extends StatefulWidget {
 }
 
 class _LoginFacebookPageState extends State<LoginFacebookPage> {
-  //guarda o email inserido pelo utilizador
-  final _email = TextEditingController();
-
-  //guarda a password inserida pelo utilizador
-  final _password = TextEditingController();
-
-  //chave para poder verificar o email e a password colocados
-  final formKey = GlobalKey<FormState>();
-
   bool _isLoggedInFacebook = false;
 
   //string que vai conter a informação do erro obtido
@@ -59,7 +51,7 @@ class _LoginFacebookPageState extends State<LoginFacebookPage> {
         child: ListView(
           children: <Widget>[
             Text(
-              'No current account connected.',
+              'Facebook:',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20.0,
@@ -82,28 +74,6 @@ class _LoginFacebookPageState extends State<LoginFacebookPage> {
       );
 
     return Text('Already logged in with Facebook.');
-  }
-
-  // a partir dos dados introduzidos no email e password vai tentar ligar-se a base de dados
-  void submit(BuildContext context) async {
-    if (validate()) {
-      try {
-        String uid = await context
-            .read<AuthenticationService>()
-            .logIn(email: _email.text.trim(), password: _password.text.trim());
-        print("Signed in with ID $uid");
-        Navigator.of(context).pop(); // para remover o welcomePage
-        Navigator.of(context).pop(); // para remover o loginPage
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) => HomePage()));
-      } catch (e) {
-        //caso não seja possivel ligar a base de dados é lançada uma exceção
-        setState(() {
-          _error = e.message;
-        });
-        print(e);
-      }
-    }
   }
 
   // Trigger when click to login with facebook
@@ -130,54 +100,5 @@ class _LoginFacebookPageState extends State<LoginFacebookPage> {
         print("There was an Error");
         break;
     }
-  }
-
-  //função que verifica se os inputs do email e da password são validos
-  bool validate() {
-    final form = formKey.currentState;
-    if (form.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
-  }
-
-  //mostra um alerta com a mensagem do erro ocorrido
-  Widget showAlert() {
-    if (_error != null) {
-      return Container(
-        color: Colors.amberAccent,
-        width: double.infinity,
-        padding: EdgeInsets.all(8.0),
-        child: Row(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(Icons.error_outline),
-            ),
-            Expanded(
-              child: AutoSizeText(
-                _error,
-                maxLines: 3,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  setState(() {
-                    _error = null;
-                  });
-                },
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-    return SizedBox(
-      height: 0,
-    );
   }
 }

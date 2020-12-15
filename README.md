@@ -40,12 +40,10 @@ The app allows the user to manage his events and don't worry about posting updat
 
 ---
 ## Elevator Pitch
-Draft a small text to help you quickly introduce and describe your product in a short time and a few words (~800 characters), a technique usually known as elevator pitch.
-
-Take a look at the following links to learn some techniques:
-* [Crafting an Elevator Pitch](https://www.mindtools.com/pages/article/elevator-pitch.htm)
-* [The Best Elevator Pitch Examples, Templates, and Tactics - A Guide to Writing an Unforgettable Elevator Speech, by strategypeak.com](https://strategypeak.com/elevator-pitch-examples/)
-* [Top 7 Killer Elevator Pitch Examples, by toggl.com](https://blog.toggl.com/elevator-pitch-examples/)
+Have you ever updated an event and forgot to post a update on a certain social network?
+Our name is EasyShare, a app that is made for event owners that allows them to save time and keep track on event social media.
+Unlike other applications for managing events, our goal is that our app is the place where the user controls the status of events on different social networks.
+Now is **Easy to Share**, download and start saving time.
 
 ---
 ## Requirements

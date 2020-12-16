@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                       Icon(Icons.event),
                       Container(
                         alignment: Alignment.centerLeft,
-                        width: 230,
+                        width: MediaQuery.of(context).size.width -160,
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(context,

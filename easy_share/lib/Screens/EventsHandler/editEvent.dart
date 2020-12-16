@@ -66,9 +66,7 @@ class _UpdateEventState extends State<UpdateEvent> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    validator: (String value){
-                      return value.isEmpty ? "Name field can't be empty!":null;
-                    },
+                    validator: TextFieldValidator.validate,
                     onSaved: (text){
                       _name = text;
                     },
@@ -86,9 +84,7 @@ class _UpdateEventState extends State<UpdateEvent> {
                     ),
                   ),
                   TextFormField(
-                    validator: (String value){
-                      return value.isEmpty ? "Location field can't be empty!":null;
-                    },
+                    validator: TextFieldValidator.validate,
                     onSaved: (text){
                       _location = text;
                     },
@@ -264,4 +260,10 @@ class _UpdateEventState extends State<UpdateEvent> {
     }
   }
 
+}
+
+class TextFieldValidator {
+  static String validate(String input){
+    return input.isEmpty ? ("This field can't be empty!") : null;
+  }
 }

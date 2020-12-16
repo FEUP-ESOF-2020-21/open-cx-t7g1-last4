@@ -66,9 +66,7 @@ class _UpdateEventState extends State<UpdateEvent> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    validator: (String value){
-                      return value.isEmpty ? "Name field can't be empty!":null;
-                    },
+                    validator: TextFieldValidator.validate,
                     onSaved: (text){
                       _name = text;
                     },
@@ -86,9 +84,7 @@ class _UpdateEventState extends State<UpdateEvent> {
                     ),
                   ),
                   TextFormField(
-                    validator: (String value){
-                      return value.isEmpty ? "Location field can't be empty!":null;
-                    },
+                    validator: TextFieldValidator.validate,
                     onSaved: (text){
                       _location = text;
                     },
@@ -187,37 +183,32 @@ class _UpdateEventState extends State<UpdateEvent> {
                     ),
                   ),
                   SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      RaisedButton(
-                        child: Text("Save Changes",style: TextStyle(fontSize: 20),),
-                        color: Colors.deepOrange,
+                  RaisedButton(
+                    child: Text("Save Changes",style: TextStyle(fontSize: 20),),
+                    color: Colors.deepOrange,
 
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)
-                        ),
-                        onPressed: (){
-                          submit();
-                        },
-                      ),
-                      RaisedButton(
-                        child: Text("Cancel Edit",style: TextStyle(fontSize: 20),),
-                        color: Colors.deepOrange,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.red)
+                    ),
+                    onPressed: (){
+                      submit();
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text("Cancel Edit",style: TextStyle(fontSize: 20),),
+                    color: Colors.deepOrange,
 
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)
-                        ),
-                        onPressed: (){
-                          Navigator.pushAndRemoveUntil(context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => HomePage()),
-                                  (route) => false);
-                        },
-                      ),
-                    ],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.red)
+                    ),
+                    onPressed: (){
+                      Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => HomePage()),
+                              (route) => false);
+                    },
                   ),
                   SizedBox(height: 60,),
                 ],
@@ -264,4 +255,10 @@ class _UpdateEventState extends State<UpdateEvent> {
     }
   }
 
+}
+
+class TextFieldValidator {
+  static String validate(String input){
+    return input.isEmpty ? ("This field can't be empty!") : null;
+  }
 }

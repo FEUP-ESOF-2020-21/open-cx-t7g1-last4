@@ -62,7 +62,7 @@ class MyEvents extends StatelessWidget {
                     eventEnded(document),
                     Container(
                       alignment: Alignment.centerLeft,
-                      width: 325,
+                      width: MediaQuery.of(context).size.width -80,
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(context,

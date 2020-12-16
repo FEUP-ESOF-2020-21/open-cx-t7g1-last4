@@ -40,12 +40,10 @@ The app allows the user to manage his events and don't worry about posting updat
 
 ---
 ## Elevator Pitch
-Draft a small text to help you quickly introduce and describe your product in a short time and a few words (~800 characters), a technique usually known as elevator pitch.
-
-Take a look at the following links to learn some techniques:
-* [Crafting an Elevator Pitch](https://www.mindtools.com/pages/article/elevator-pitch.htm)
-* [The Best Elevator Pitch Examples, Templates, and Tactics - A Guide to Writing an Unforgettable Elevator Speech, by strategypeak.com](https://strategypeak.com/elevator-pitch-examples/)
-* [Top 7 Killer Elevator Pitch Examples, by toggl.com](https://blog.toggl.com/elevator-pitch-examples/)
+Have you ever updated an event and forgot to post a update on a certain social network?<br>
+Our name is EasyShare, a app that is made for event owners that allows them to save time and keep track on event social media.<br>
+Unlike other applications for managing events, our goal is that our app is the place where the user controls the status of events on different social networks.<br>
+Now is **Easy to Share**, download and start saving time.<br>
 
 ---
 ## Requirements
@@ -337,22 +335,22 @@ Scenario: When I click in the name of one event, the app should display all the 
     - Value: Must have.
     - Effort to implement: S
     
-**9. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
+**9. As a conference owner, I can associate EasyShare account with reddit so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**10. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
+**10. As a conference owner, I can automatically add an event on reddit so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**11. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
+**11. As a conference owner, I can automatically update an event on reddit so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
   
-**12. As a conference owner,  I can automatically delete an event on facebook so that data will be syncronize.**
+**12. As a conference owner,  I can automatically delete an event on reddit so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.

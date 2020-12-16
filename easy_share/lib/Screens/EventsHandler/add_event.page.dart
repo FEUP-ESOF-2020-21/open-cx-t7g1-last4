@@ -148,9 +148,7 @@ class _AddEventState extends State<AddEventPage> {
   Widget buildTextField(String hintText) {
     if (hintText != "Description"){
       return TextFormField(
-        validator: (String input){
-          return input.isEmpty ? "$hintText field can't be empty!" : null;
-        },
+        validator: TextFieldValidator.validate,
         style: new TextStyle(fontSize: 20),
         onSaved: (String input){
           switch (hintText){
@@ -204,7 +202,6 @@ class _AddEventState extends State<AddEventPage> {
             child: Text("Create Event",style: TextStyle(fontSize: 20),)),
       );
   }
-
   bool validate(){
     final form = formKey.currentState;
     if (form.validate()){
@@ -240,5 +237,11 @@ class _AddEventState extends State<AddEventPage> {
               builder: (BuildContext context) => HomePage()),
               (route) => false);
     }
+  }
+}
+
+class TextFieldValidator {
+  static String validate(String input){
+    return input.isEmpty ? ("This field can't be empty!") : null;
   }
 }

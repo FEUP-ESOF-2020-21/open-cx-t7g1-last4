@@ -15,15 +15,6 @@ class EventInfo extends StatelessWidget {
 
   EventInfo(this._document);
 
-  // Create the `Reddit` instance and authenticated
-  final Reddit reddit = await Reddit.createScriptInstance(
-    clientId: "z-ugkvCVoM1zeg",
-    clientSecret: "-6DSZV2N2qKAWAVjy3WuFCwKMPJZfQ",
-    userAgent: "mariapia",
-    username: "johneasyshare",
-    password: "easyshare123", // Fake
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,7 +151,7 @@ class EventInfo extends StatelessWidget {
                 padding: EdgeInsets.only(top: 20.0, left: 30.0),
                 child: FloatingActionButton(
                   onPressed: () {
-                    submitPostReddit(reddit, getPostTitle(_document),
+                    submitPostReddit(_document['Nome'], getPostTitle(_document),
                         getPostContent(_document));
                   },
                   child: Icon(Icons.add),
@@ -233,11 +224,26 @@ Future<http.Response> updateFacebook(String title) async {
 }
 
 Future<void> submitPostReddit(
-    Reddit reddit, String postTitle, String postContent) async {
-  SubredditRef subs = await reddit.subreddit(postTitle);
-  var post = await subs.submit(postTitle, selftext: postContent);
-  print("api worked");
-  print("My name is ${post.approved}");
+    String name, String postTitle, String postContent) async {
+  Reddit reddit = await Reddit.createScriptInstance(
+    clientId: "z-ugkvCVoM1zeg",
+    clientSecret: "-6DSZV2N2qKAWAVjy3WuFCwKMPJZfQ",
+    userAgent: "mariapia",
+    username: "johneasyshare",
+    password: "easyshare123", // Fake
+  );
+  List<String> words = name.split(" ");
+  // Stream<SubredditRef> subs = reddit.subreddits.search(postTitle);
+  //var post = await subs.submit(postTitle, selftext: postContent);
+  List<SubredditRef> subs = [];
+  for (var i = 0; i < words.length; i++) {
+    List<SubredditRef> subsForWord =
+        await reddit.subreddits.searchByName(words[i]);
+    subs = subs + subsForWord;
+  }
+  List<String> subsNames = subs.map((s) => s.displayName).toList();
+
+  print("Subreddits to post to: ${subsNames}");
 }
 
 String getPostTitle(DocumentSnapshot _document) {

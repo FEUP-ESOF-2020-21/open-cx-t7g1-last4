@@ -26,25 +26,24 @@ Please contact us!
 
 Thank you!
 
-*Guilherme Callasi*
-*Joana Ferreira*
-*José Macedo*
+*Guilherme Callasi,*
+*Joana Ferreira,*
+*José Macedo,*
 *Marcelo Reis*
 
 ---
 
 ## Product Vision
 
-EasyShare is an app created to manage an event's social networks and make sure they are all in synchronized.
+EasyShare is an app created to manage an event's social networks and make sure they are all in synchronized. <br>
+The app allows the user to manage his events and don't worry about posting updates on social networks.
 
 ---
 ## Elevator Pitch
-Draft a small text to help you quickly introduce and describe your product in a short time and a few words (~800 characters), a technique usually known as elevator pitch.
-
-Take a look at the following links to learn some techniques:
-* [Crafting an Elevator Pitch](https://www.mindtools.com/pages/article/elevator-pitch.htm)
-* [The Best Elevator Pitch Examples, Templates, and Tactics - A Guide to Writing an Unforgettable Elevator Speech, by strategypeak.com](https://strategypeak.com/elevator-pitch-examples/)
-* [Top 7 Killer Elevator Pitch Examples, by toggl.com](https://blog.toggl.com/elevator-pitch-examples/)
+Have you ever updated an event and forgot to post a update on a certain social network?<br>
+Our name is EasyShare, a app that is made for event owners that allows them to save time and keep track on event social media.<br>
+Unlike other applications for managing events, our goal is that our app is the place where the user controls the status of events on different social networks.<br>
+Now is **Easy to Share**, download and start saving time.<br>
 
 ---
 ## Requirements
@@ -207,22 +206,22 @@ Scenario: I leave the register field empty
   ![LoginMockup](./docs/UIMockups/login_mockup.png)
   - **Acceptance tests**.
 ```gherkin
-Scenario: I try to login corectly
+Scenario: When I try to login corectly, the app should grant access to my personal account
   Given I enter in to the login page  
   When I try to login with the correct email and password
-  Then the system will grant access to my account
+  Then I will have access to my account
 ```
 ```gherkin
-Scenario: I try to login incorrectly
+Scenario: When I try to login incorrectly, the app should notify me with an error message
   Given I enter in to the login page
   When I try to login with the wrong email or password
-  Then the system will notify me with an error message
+  Then I will be notify with an error message
 ```
 ```gherkin
-Scenario: I leave the login field empty
+Scenario: When I leave the login field empty, the app should notify me whith an error message
   Given I enter in to the login page
   When I leave the fields empty and try to login
-  Then the system will notify me with an error message
+  Then I will be notify with an error message
 ```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
@@ -232,16 +231,16 @@ Scenario: I leave the login field empty
   - **User interface mockups**.
   - **Acceptance tests**.
 ```gherkin
-Scenario: I turn off the app
-  Given I turn off the app 
-  When I don't logout my account 
-  Then when reopened, the account will be logged
+Scenario: If I turn off the app, when reopened, the account will be logged
+   Given I turn off the app 
+   When I don't logout my account 
+   Then when reopened, my account will still be logged
 ```
 ```gherkin
-Scenario: I logout
-  Given I want to close my app safely
-  When I logout my account 
-  Then the system will close the connection with the customer account and redirect to welcome page
+Scenario: When I logout, the app will disconnect my account 
+   Given I want to close my app safely
+   When I logout my account 
+   Then the app will disconnect my account and I will be redirect to welcome page
 ```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
@@ -264,28 +263,28 @@ Scenario: I create an event successfuly
   - **User interface mockups**.
   - **Acceptance tests**.
 ```gherkin
-Scenario: I want to edit an specified event
-  Given I want to edit an specified event
-  When I click in the button that grants me access to editEvent page
-  Then the system will display all the event information that can be modified 
+Scenario: If I try to edit an event incorrectly the app should warn me with an error message
+   Given I enter in to edit page and try to edit the event with incorrect data
+   When I click in the button that saves all the changes made
+   Then I will be notify with a clear error message
 ```
 ```gherkin
-Scenario: I try to edit an event incorrectly
-  Given I try to edit an event with incorrect data
-  When I click in the button that saves all the changes made
-  Then the system will warn me with a clear error message
+Scenario: When I select the start date or the end date incorrectly, the app should warn me with an erro message
+   Given I select a start date for the event
+   When I select an end date that is before than start date
+   Then I will be notify with an error message
 ```
 ```gherkin
-Scenario: I select the start date or the end date incorrectly
-  Given I select a start date for the event
-  When I select an end date that is before than start date
-  Then the system will warm me with an error message
+Scenario: If I click in "Cancel Edit" button the previous changes made should not be saved
+   Given I unintentionally change an event field 
+   When I click in "Cancel Edit" button 
+   Then the previous changes made will not be saved
 ```
 ```gherkin
-Scenario: I dont want to save the changed informations
-  Given I unintentionally change an event field 
-  When I click in "Cancel Edit" button 
-  Then the previous changes made will not be saved  
+Scenario: When I edit an event and save the changes made, the app should update all the informations changed
+   Given I enter in to edit page and change the event information
+   When I click in "Save Edit" button 
+   Then the app will save the changes made an I will be redirect to home page 
 ```
   - **Value and effort**.
     - Value: Must have.
@@ -295,9 +294,9 @@ Scenario: I dont want to save the changed informations
   - **User interface mockups**.
   - **Acceptance tests**.
 ```gherkin
-Scenario: I delete an event successfuly
-  Given I delete an event successfuly
-  When I delete an event, the button will say I have deleted an event.
+Scenario: When I delete an event, it should not appear on my event page and on my home page
+  Given I click in the icon that delete the event
+  When I click in 'yes' option 
   Then the event is deelted and removed from the database.
 ```
   - **Value and effort**.
@@ -308,16 +307,16 @@ Scenario: I delete an event successfuly
   - **User interface mockups**.
   - **Acceptance tests**.
 ```gherkin
-Scenario: I want to see my events
-  Given I want to see my events
-  When I enter in to MyEvents Page
-  Then the system will display all my events chronologically ordered (recent to oldest)
+Scenario: When I enter in to MyEventes page, the app should diplay all my events chronologically ordered
+   Given I want to see my events
+   When I enter in to MyEvents Page
+   Then I will see all my events chronologically ordered
 ```
 ```gherkin
-Scenario: I want to see the upcoming events
-  Given I want to see the upcoming events
-  When I enter in to Home Page
-  Then the system will display all my events chronologically ordered 
+Scenario: When I enter in to home page, the app should diplay my events that still available chronologically ordered 
+   Given I want to see the upcoming events
+   When I enter in to Home Page
+   Then I will see my events that still available chronologically ordered 
 ```
   - **Value and effort**.
     - Value: Must have.
@@ -327,31 +326,31 @@ Scenario: I want to see the upcoming events
   - **User interface mockups**.
   - **Acceptance tests**.
 ```gherkin
-Scenario: I want to see the details of the event
-  Given I want to see the details of the event
-  When I click in the name of the desired event
-  Then the system will display all the details of the event
+Scenario: When I click in the name of one event, the app should display all the details from the selected event
+   Given I want to see the details of the event
+   When I click in the name of the desired event
+   Then I will see all the details from the selected event
 ```
   - **Value and effort**.
     - Value: Must have.
     - Effort to implement: S
     
-**9. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
+**9. As a conference owner, I can associate EasyShare account with reddit so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**10. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
+**10. As a conference owner, I can automatically add an event on reddit so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**11. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
+**11. As a conference owner, I can automatically update an event on reddit so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
   
-**12. As a conference owner,  I can automatically delete an event on facebook so that data will be syncronize.**
+**12. As a conference owner,  I can automatically delete an event on reddit so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.

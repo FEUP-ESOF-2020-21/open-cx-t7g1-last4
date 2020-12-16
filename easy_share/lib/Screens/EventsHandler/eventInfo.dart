@@ -10,10 +10,18 @@ import 'package:draw/draw.dart';
 
 import 'package:http/http.dart' as http;
 
-class EventInfo extends StatelessWidget {
+class EventInfo extends StatefulWidget {
   final DocumentSnapshot _document;
 
   EventInfo(this._document);
+
+  @override
+  _EventInfoState createState() => _EventInfoState();
+}
+
+class _EventInfoState extends State<EventInfo> {
+  bool _isPublished = false;
+  List<String> _redditSubs = [];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +29,7 @@ class EventInfo extends StatelessWidget {
       appBar: AppBar(
         title: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text(_document['Nome']),
+          child: Text(widget._document['Nome']),
         ),
         centerTitle: true,
       ),
@@ -58,7 +66,7 @@ class EventInfo extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 30.0),
                 child: Text(
-                  "- From:   ${DateFormat('dd/MM/yyyy | HH:mm').format(_document['Inicio'].toDate()).toString()}",
+                  "- From:   ${DateFormat('dd/MM/yyyy | HH:mm').format(widget._document['Inicio'].toDate()).toString()}",
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -67,7 +75,7 @@ class EventInfo extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 30.0),
                 child: Text(
-                  "- To:   ${DateFormat('dd/MM/yyyy | HH:mm').format(_document['Fim'].toDate()).toString()}",
+                  "- To:   ${DateFormat('dd/MM/yyyy | HH:mm').format(widget._document['Fim'].toDate()).toString()}",
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -94,7 +102,7 @@ class EventInfo extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 30.0),
                 child: Text(
-                  "- " + _document['Local'],
+                  "- " + widget._document['Local'],
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -143,16 +151,19 @@ class EventInfo extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 30.0),
                 child: AutoSizeText(
-                  "- " + _document['Descricao'],
+                  "- " + widget._document['Descricao'],
                   style: TextStyle(fontSize: 16),
                 ),
               ),
+              showRedditsWhereItWasPublished(),
               Padding(
                 padding: EdgeInsets.only(top: 20.0, left: 30.0),
                 child: FloatingActionButton(
                   onPressed: () {
-                    submitPostReddit(_document['Nome'], getPostTitle(_document),
-                        getPostContent(_document));
+                    submitPostReddit(
+                        widget._document['Nome'],
+                        getPostTitle(widget._document),
+                        getPostContent(widget._document));
                   },
                   child: Icon(Icons.add),
                 ),
@@ -165,7 +176,7 @@ class EventInfo extends StatelessWidget {
   }
 
   Widget eventStatus() {
-    if (_document['Cancelado'])
+    if (widget._document['Cancelado'])
       return Text(
         "Status: Canceled ",
         style: TextStyle(
@@ -173,7 +184,7 @@ class EventInfo extends StatelessWidget {
             fontWeight: FontWeight.bold,
             decoration: TextDecoration.underline),
       );
-    else if (_document['Terminou'])
+    else if (widget._document['Terminou'])
       return Text(
         "Status: Unavailable ",
         style: TextStyle(
@@ -192,7 +203,7 @@ class EventInfo extends StatelessWidget {
   }
 
   Widget eventVirtual() {
-    if (_document['Virtual'])
+    if (widget._document['Virtual'])
       return Text(
         "- Yes ",
         style: TextStyle(
@@ -207,43 +218,72 @@ class EventInfo extends StatelessWidget {
       ),
     );
   }
-}
 
-Future<http.Response> updateFacebook(String title) async {
-  http.Response response = await http.post(
-    'https://jsonplaceholder.typicode.com/albums',
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
-  );
-  print(jsonDecode(response.body));
-  return response;
-}
-
-Future<void> submitPostReddit(
-    String name, String postTitle, String postContent) async {
-  Reddit reddit = await Reddit.createScriptInstance(
-    clientId: "z-ugkvCVoM1zeg",
-    clientSecret: "-6DSZV2N2qKAWAVjy3WuFCwKMPJZfQ",
-    userAgent: "mariapia",
-    username: "johneasyshare",
-    password: "easyshare123", // Fake
-  );
-  List<String> words = name.split(" ");
-  // Stream<SubredditRef> subs = reddit.subreddits.search(postTitle);
-  //var post = await subs.submit(postTitle, selftext: postContent);
-  List<SubredditRef> subs = [];
-  for (var i = 0; i < words.length; i++) {
-    List<SubredditRef> subsForWord =
-        await reddit.subreddits.searchByName(words[i]);
-    subs = subs + subsForWord;
+  //mostra um alerta com a mensagem do erro ocorrido
+  Widget showRedditsWhereItWasPublished() {
+    print("here");
+    if (_redditSubs.length != 0) {
+      return Container(
+        padding: EdgeInsets.all(8.0),
+        child: Column(children: <Widget>[
+          SizedBox(height: 30.0),
+          Text("This event was published in the following subreddits: ",
+              textAlign: TextAlign.left,
+              style: TextStyle(fontWeight: FontWeight.bold)),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Icon(Icons.share),
+              ),
+              Expanded(
+                child: SizedBox(
+                    height: 150.0,
+                    child: ListView.builder(
+                      itemCount: _redditSubs.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text('${_redditSubs[index]}'),
+                        );
+                      },
+                    )),
+              )
+            ],
+          ),
+        ]),
+      );
+    }
+    return SizedBox(
+      height: 0,
+    );
   }
-  List<String> subsNames = subs.map((s) => s.displayName).toList();
 
-  print("Subreddits to post to: ${subsNames}");
+  Future<void> submitPostReddit(
+      String name, String postTitle, String postContent) async {
+    Reddit reddit = await Reddit.createScriptInstance(
+      clientId: "z-ugkvCVoM1zeg",
+      clientSecret: "-6DSZV2N2qKAWAVjy3WuFCwKMPJZfQ",
+      userAgent: "mariapia",
+      username: "johneasyshare",
+      password: "easyshare123", // Fake
+    );
+    List<String> words = name.split(" ");
+    // Stream<SubredditRef> subs = reddit.subreddits.search(postTitle);
+    //var post = await subs.submit(postTitle, selftext: postContent);
+    List<SubredditRef> subs = [];
+    for (var i = 0; i < words.length; i++) {
+      List<SubredditRef> subsForWord =
+          await reddit.subreddits.searchByName(words[i]);
+      subs = subs + subsForWord;
+    }
+
+    setState(() {
+      _redditSubs = subs.map((s) => s.displayName).toList();
+    });
+    print("Subreddits to post to: ${_redditSubs}");
+    showRedditsWhereItWasPublished();
+    return;
+  }
 }
 
 String getPostTitle(DocumentSnapshot _document) {

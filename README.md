@@ -335,22 +335,22 @@ Scenario: When I click in the name of one event, the app should display all the 
     - Value: Must have.
     - Effort to implement: S
     
-**9. As a conference owner, I can associate EasyShare account with facebook so that I can communicate between them.**
+**9. As a conference owner, I can associate EasyShare account with reddit so that I can communicate between them.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**10. As a conference owner, I can automatically add an event on facebook so that it will be syncronize.**
+**10. As a conference owner, I can automatically add an event on reddit so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
 
-**11. As a conference owner, I can automatically update an event on facebook so that data will be syncronize.**
+**11. As a conference owner, I can automatically update an event on reddit so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.
   
-**12. As a conference owner,  I can automatically delete an event on facebook so that data will be syncronize.**
+**12. As a conference owner,  I can automatically delete an event on reddit so that data will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
   - **Value and effort**.

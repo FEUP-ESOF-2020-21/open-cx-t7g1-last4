@@ -47,7 +47,6 @@ Now is **Easy to Share**, download and start saving time.<br>
 
 ---
 ## Requirements
-
 In this section, you should describe all kinds of requirements for your module: functional and non-functional requirements.
 
 Start by contextualizing your module, describing the main concepts, terms, roles, scope and boundaries of the application domain addressed by the project.
@@ -69,7 +68,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 3. The system verifies if the email, password and username are valid.
 4. The system saves the data from the user.
 
-- Alternative Flows and Exceptions: If the verification process fails (3 point) the system will warn the user and request to input all the fields again or the fields that are invalid.   
+- Alternative Flows and Exceptions: If the verification process fails (3rd point) the system will warn the user and request to input the fields that are invalid.   
 
 #### Login:
 - Actor: Conference Owner
@@ -83,7 +82,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 2. The system verifies if the email and password are valid.
 3. The system grants user access. 
 
-- Alternative Flows and Exceptions: If the verification process fails the system will warn the user and request to input both fields again.
+- Alternative Flows and Exceptions: If the verification process fails the system will warn the user and request to input the fields that are invalid.
 
 #### Logout:
 - Actor: Conference Owner
@@ -93,7 +92,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Preconditions and Postconditions: The user must be logged in before trying to log out. After logging out, the user can now log in with other account or close the app knowing that their information is secure.
 
 - Normal Flow:
-1. User clicks the logout button.
+1. User clicks in the logout button.
 2. The system will redirect to welcome page.
 
 - Alternative Flows and Exceptions: In principle logout will never fail.
@@ -108,9 +107,10 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Normal Flow:
 1. User logs in with their credentials.
 2. The system grants user access.
-3. User creates an event.
-4. The system will verify if all fields are acceptable.
-5. The system will add the created event to the list of personal events. 
+3. User clicks in the floating button '+'
+4. User creates an event.
+5. The system will verify if all fields are acceptable.
+6. The system will add the created event to the list of personal events. 
 
 - Alternative Flows and Exceptions: If the verification step fails the system will warn the user and notify what fields are incorrect.
 
@@ -151,7 +151,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Preconditions and Postconditions: The user should have at least one event to use this functionality.
 
 - Normal Flow:
-1. User clicks in “See all persona Events”.
+1. User clicks in “MyEvents”.
 2. The system will print all the information about all events. 
 
 - Alternative Flows and Exceptions:  In principle the print of all events will never fail.
@@ -159,17 +159,16 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 #### Sync. Events with social networks:
 - Actor: Conference Owner
 
-- Description: In order to facilitate the user’s work, the application will propagate the events   through the social networks that the user wants. This can be either automatic or manual.
+- Description: In order to facilitate the user’s work, the application will propagate the events through the social networks that the user wants. This can only be manual.
 
 - Preconditions and Postconditions: The user must associate his social networks with EasyShare to start sharing his events. After sharing, the events must appear in user social networks.
 
 - Normal Flow:
-1. User set automatic sync.
-2. The system changes the way that propagate the events to automatic.
-3. User creates an event.
-4. The system will automatically share it on user social networks.
+1. User select the event that want to share.
+2. User clicks in the button that share the event to social networks.
+3. The system will share the event.
 
-- Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
+- Alternative Flows and Exceptions: If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
 #### User stories map

@@ -1,30 +1,6 @@
-Melhoramentos depois da revisão da 1º sprint:
+Melhoramentos depois da revisão da 4º sprint:
 
-- alterar nome de user stories nos issues ( colocar a userstorie em vez de ex: Login)
-
-- aceptance test : colocar given
-
-- trabalhar nos assignees de cada um ⚠️
-
-
-Melhoramentos a fazer:
-________________________________________________________________________________________________________________________________________________________
-José Macedo
-- userstory:
-	userstory map - agrupar as que são semelhantes
-	partir as epics
-	syncronize a event on facebook, dividir em varias userstorys 
-________________________________________________________________________________________________________________________________________________________
-
-________________________________________________________________________________________________________________________________________________________
-Joana 
-- product increment:
-	colocar apk na release do github
-________________________________________________________________________________________________________________________________________________________
-	
-________________________________________________________________________________________________________________________________________________________
-Guilherme
-- Logical architecture and UML Package Diagram
-- Physical architecture and UML Component/Deployment Diagram
-________________________________________________________________________________________________________________________________________________________
-	
+test:
+colocar os testes que fizemos
+testes funcionais
+testes de gerkin

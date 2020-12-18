@@ -348,7 +348,15 @@ Scenario: When I click in the name of one event, the app should display all the 
 **10. As a conference owner, I can automatically add an event on reddit so that it will be syncronize.**
   - **User interface mockups**.
   - **Acceptance tests**.
+```gherkin
+Scenario: When I enter 'Submit on Reddit', my event will be posted on Reddit
+   Given I want to post my event on Reddit
+   When I click 'Submit on Reddit'
+   Then I will see my event posted on Reddit
+```
   - **Value and effort**.
+    - Value: Must have.
+    - Effort to implement: M
 
 **11. As a conference owner, I can automatically update an event on reddit so that data will be syncronize.**
   - **User interface mockups**.

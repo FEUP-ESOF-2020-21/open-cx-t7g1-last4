@@ -179,22 +179,22 @@ Start by contextualizing your module, describing the main concepts, terms, roles
     ![](./docs/UIMockups/story1.jpg)
   - **Acceptance tests**.
 ```gherkin
-Scenario: I try to register corectly
+Scenario: When I try to register corectly, the app should create my personal account
   Given I enter in to the register page  
   When I try to register with the correct email and password
-  Then then system will grant create my EasyShare account
+  Then I will register my account on EasyShare
 ```
 ```gherkin
-Scenario: I try to register incorrectly
-  Given I enter in to the register page 
-  When I try to register with a not valid email
-  Then the system will notify me with an error message
+Scenario: When I try to register incorrectly, the app should notify me with an error message
+  Given I enter in to the register page
+  When I try to register with a wrong email or password
+  Then I will be notify with an error message
 ```
 ```gherkin
-Scenario: I leave the register field empty
-  Given I enter in to the register page 
+Scenario: When I leave the register field empty, the app should notify me whith an error message
+  Given I enter in to the register page
   When I leave the fields empty and try to register
-  Then the system will notify me with an error message
+  Then I will be notify with an error message
 ```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
@@ -227,7 +227,7 @@ Scenario: When I leave the login field empty, the app should notify me whith an 
     - Effort to implement: S 
     
 **3. As a conference owner, I want to logout so that I close my personal account.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
     ![](./docs/UIMockups/story3.jpg)
   - **Acceptance tests**.
 ```gherkin
@@ -247,11 +247,11 @@ Scenario: When I logout, the app will disconnect my account
     - Effort to implement: XS 
     
 **4. As a conference owner, I want to create an event so that I can manage it on the app.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
     ![](./docs/UIMockups/story4.jpg)
   - **Acceptance tests**.
 ```gherkin
-Scenario: I create an event successfuly
+Scenario: When I create an event successfuly, the app will add a event to my account
   Given I create an event successfuly
   When I create an event, the button will say I have created an event.
   Then the event is created and added to the database.
@@ -261,7 +261,7 @@ Scenario: I create an event successfuly
     - Effort to implement: M 
   
 **5. As a conference owner, I want to change an event so that I can update data.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
     ![](./docs/UIMockups/story5.jpg)
   - **Acceptance tests**.
 ```gherkin
@@ -293,7 +293,7 @@ Scenario: When I edit an event and save the changes made, the app should update 
     - Effort to implement: M
 
 **6. As a conference owner, I want to delete an event so that It doesn't appear on the app.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
     ![](./docs/UIMockups/story6.jpg)
   - **Acceptance tests**.
 ```gherkin
@@ -307,7 +307,7 @@ Scenario: When I delete an event, it should not appear on my event page and on m
     - Effort to implement: M 
    
 **7. As a conference owner, I want to see a list of my events so that is easier to access them.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
     ![](./docs/UIMockups/story7.jpg)
   - **Acceptance tests**.
 ```gherkin
@@ -327,7 +327,7 @@ Scenario: When I enter in to home page, the app should diplay my events that sti
     - Effort to implement: M
     
 **8. As a conference owner, I want to select a specific event and see its details.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
     ![](./docs/UIMockups/story8.jpg)
   - **Acceptance tests**.
 ```gherkin

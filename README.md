@@ -40,14 +40,13 @@ The app allows the user to manage his events and don't worry about posting updat
 
 ---
 ## Elevator Pitch
-Have you ever updated an event and forgot to post a update on a certain social network?<br>
-Our name is EasyShare, a app that is made for event owners that allows them to save time and keep track on event social media.<br>
-Unlike other applications for managing events, our goal is that our app is the place where the user controls the status of events on different social networks.<br>
+Have you ever updated an event and forgotten to replicate on all your social networks?<br>
+Our name is EasyShare, an app that is made for event owners that allows them to save time and keep tracking the event on social media.<br>
+Unlike other applications for managing events, our main goal is to get together in one place tools where the user can control the status of his events on different social networks.<br>
 Now is **Easy to Share**, download and start saving time.<br>
 
 ---
 ## Requirements
-
 In this section, you should describe all kinds of requirements for your module: functional and non-functional requirements.
 
 Start by contextualizing your module, describing the main concepts, terms, roles, scope and boundaries of the application domain addressed by the project.
@@ -69,7 +68,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 3. The system verifies if the email, password and username are valid.
 4. The system saves the data from the user.
 
-- Alternative Flows and Exceptions: If the verification process fails (3 point) the system will warn the user and request to input all the fields again or the fields that are invalid.   
+- Alternative Flows and Exceptions: If the verification process fails (3rd point) the system will warn the user and request to input the fields that are invalid.   
 
 #### Login:
 - Actor: Conference Owner
@@ -83,7 +82,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 2. The system verifies if the email and password are valid.
 3. The system grants user access. 
 
-- Alternative Flows and Exceptions: If the verification process fails the system will warn the user and request to input both fields again.
+- Alternative Flows and Exceptions: If the verification process fails the system will warn the user and request to input the fields that are invalid.
 
 #### Logout:
 - Actor: Conference Owner
@@ -93,7 +92,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Preconditions and Postconditions: The user must be logged in before trying to log out. After logging out, the user can now log in with other account or close the app knowing that their information is secure.
 
 - Normal Flow:
-1. User clicks the logout button.
+1. User clicks in the logout button.
 2. The system will redirect to welcome page.
 
 - Alternative Flows and Exceptions: In principle logout will never fail.
@@ -108,9 +107,10 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Normal Flow:
 1. User logs in with their credentials.
 2. The system grants user access.
-3. User creates an event.
-4. The system will verify if all fields are acceptable.
-5. The system will add the created event to the list of personal events. 
+3. User clicks in the floating button '+'
+4. User creates an event.
+5. The system will verify if all fields are acceptable.
+6. The system will add the created event to the list of personal events. 
 
 - Alternative Flows and Exceptions: If the verification step fails the system will warn the user and notify what fields are incorrect.
 
@@ -151,7 +151,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 - Preconditions and Postconditions: The user should have at least one event to use this functionality.
 
 - Normal Flow:
-1. User clicks in “See all persona Events”.
+1. User clicks in “MyEvents”.
 2. The system will print all the information about all events. 
 
 - Alternative Flows and Exceptions:  In principle the print of all events will never fail.
@@ -159,17 +159,16 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 #### Sync. Events with social networks:
 - Actor: Conference Owner
 
-- Description: In order to facilitate the user’s work, the application will propagate the events   through the social networks that the user wants. This can be either automatic or manual.
+- Description: In order to facilitate the user’s work, the application will propagate the events through the social networks that the user wants. This can only be manual.
 
 - Preconditions and Postconditions: The user must associate his social networks with EasyShare to start sharing his events. After sharing, the events must appear in user social networks.
 
 - Normal Flow:
-1. User set automatic sync.
-2. The system changes the way that propagate the events to automatic.
-3. User creates an event.
-4. The system will automatically share it on user social networks.
+1. User select the event that want to share.
+2. User clicks in the button that share the event to social networks.
+3. The system will share the event.
 
-- Alternative Flows and Exceptions: There are more ways to do it like when sync. is in manual mode the user can go to update event and upload it to social networks. If the user doesn’t have any social network associated this functionality will be off. 
+- Alternative Flows and Exceptions: If the user doesn’t have any social network associated this functionality will be off. 
 
 ### User stories
 #### User stories map
@@ -177,25 +176,25 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 **1. As a conference owner, I want to register so that I have an account on the EasyShare app.**
   - **User interface mockups**.<br>
-  ![RegisterMockup](./docs/UIMockups/register_mockup.png)
+    ![](./docs/UIMockups/story1.jpg)
   - **Acceptance tests**.
 ```gherkin
-Scenario: I try to register corectly
+Scenario: When I try to register corectly, the app should create my personal account
   Given I enter in to the register page  
   When I try to register with the correct email and password
-  Then then system will grant create my EasyShare account
+  Then I will register my account on EasyShare
 ```
 ```gherkin
-Scenario: I try to register incorrectly
-  Given I enter in to the register page 
-  When I try to register with a not valid email
-  Then the system will notify me with an error message
+Scenario: When I try to register incorrectly, the app should notify me with an error message
+  Given I enter in to the register page
+  When I try to register with a wrong email or password
+  Then I will be notify with an error message
 ```
 ```gherkin
-Scenario: I leave the register field empty
-  Given I enter in to the register page 
+Scenario: When I leave the register field empty, the app should notify me whith an error message
+  Given I enter in to the register page
   When I leave the fields empty and try to register
-  Then the system will notify me with an error message
+  Then I will be notify with an error message
 ```
   - **Value and effort**.
     - Value: should have, but does not bring any value to customer.
@@ -203,7 +202,7 @@ Scenario: I leave the register field empty
     
 **2. As a conference owner, I want to login so that I can access my personal account.**
   - **User interface mockups**.<br>
-  ![LoginMockup](./docs/UIMockups/login_mockup.png)
+    ![](./docs/UIMockups/story2.jpg)
   - **Acceptance tests**.
 ```gherkin
 Scenario: When I try to login corectly, the app should grant access to my personal account
@@ -228,7 +227,8 @@ Scenario: When I leave the login field empty, the app should notify me whith an 
     - Effort to implement: S 
     
 **3. As a conference owner, I want to logout so that I close my personal account.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story3.jpg)
   - **Acceptance tests**.
 ```gherkin
 Scenario: If I turn off the app, when reopened, the account will be logged
@@ -247,10 +247,11 @@ Scenario: When I logout, the app will disconnect my account
     - Effort to implement: XS 
     
 **4. As a conference owner, I want to create an event so that I can manage it on the app.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story4.jpg)
   - **Acceptance tests**.
 ```gherkin
-Scenario: I create an event successfuly
+Scenario: When I create an event successfuly, the app will add a event to my account
   Given I create an event successfuly
   When I create an event, the button will say I have created an event.
   Then the event is created and added to the database.
@@ -260,7 +261,8 @@ Scenario: I create an event successfuly
     - Effort to implement: M 
   
 **5. As a conference owner, I want to change an event so that I can update data.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story5.jpg)
   - **Acceptance tests**.
 ```gherkin
 Scenario: If I try to edit an event incorrectly the app should warn me with an error message
@@ -291,7 +293,8 @@ Scenario: When I edit an event and save the changes made, the app should update 
     - Effort to implement: M
 
 **6. As a conference owner, I want to delete an event so that It doesn't appear on the app.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story6.jpg)
   - **Acceptance tests**.
 ```gherkin
 Scenario: When I delete an event, it should not appear on my event page and on my home page
@@ -304,7 +307,8 @@ Scenario: When I delete an event, it should not appear on my event page and on m
     - Effort to implement: M 
    
 **7. As a conference owner, I want to see a list of my events so that is easier to access them.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story7.jpg)
   - **Acceptance tests**.
 ```gherkin
 Scenario: When I enter in to MyEventes page, the app should diplay all my events chronologically ordered
@@ -323,7 +327,8 @@ Scenario: When I enter in to home page, the app should diplay my events that sti
     - Effort to implement: M
     
 **8. As a conference owner, I want to select a specific event and see its details.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story8.jpg)
   - **Acceptance tests**.
 ```gherkin
 Scenario: When I click in the name of one event, the app should display all the details from the selected event
@@ -404,13 +409,8 @@ Use cross-links to the code repository and only embed real fragments of code whe
 ---
 ## Test
 
-There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
-
-In this section it is only expected to include the following:
-* test plan describing the list of features to be tested and the testing methods and tools;
-* test case specifications to verify the functionalities, using unit tests and acceptance tests.
- 
-A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
+Unit Tests:<br>
+In the Unit Tests we focused our tests on the features related to the insertion of a Profile (email and password) and on Events(title and location).<br>
 
 ---
 ## Configuration and change management

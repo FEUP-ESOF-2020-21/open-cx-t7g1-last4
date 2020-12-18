@@ -6,9 +6,7 @@ import 'package:easy_share/Screens/Login/register.page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'Screens/home.page.dart';
-import 'Screens/add_event.page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +38,6 @@ class MyApp extends StatelessWidget {
             "/": (context) => AuthenticationWrapper(),
             "/loginPage": (context) => LoginPage(),
             "/registerPage": (context) => RegisterPage(),
-            "/addEventPage": (context) => AddEventPage(),
           },
         ));
   }

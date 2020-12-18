@@ -1,3 +1,6 @@
+import 'dart:collection';
+import 'package:easy_share/Screens/EventsHandler/deleteEvent.dart';
+import 'package:easy_share/Screens/EventsHandler/editEvent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -5,11 +8,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'EventsHandler/eventInfo.dart';
 import 'Login/authentication_service.dart';
-import 'add_event.page.dart';
+import 'EventsHandler/add_event.page.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+
 
 import 'MainDrawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +51,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            ListEvents(context),
+            listEvents(context),
           ],
         )
       ),
@@ -53,8 +65,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
-  Widget ListEvents(BuildContext context){
+  Widget listEvents(BuildContext context){
     return Container(
       child: StreamBuilder(
         stream: getUserEventsStreamSnapshot(context),
@@ -62,12 +73,15 @@ class HomePage extends StatelessWidget {
           if (!snapshot.hasData){
             return const Text("Loading...");
           }
-          return new ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: snapshot.data.documents.length,
-            itemBuilder: (BuildContext context,int index) =>
-                buildEvents(context,snapshot.data.documents[index])
+          return new Expanded(
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (BuildContext context,int index) =>
+                    buildEvents(context,snapshot.data.documents[index])
+              ),
           );
         } ,
       ),
@@ -80,8 +94,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildEvents(BuildContext context,DocumentSnapshot document){
-    final _now = DateTime.now();
-    if (_now.isBefore(document['Fim'].toDate()) ) {
+    atualizarEstadoEventos(document);
+    if( !document['Terminou']) {
       return new Container(
         child: Card(
           child: Padding(
@@ -95,28 +109,36 @@ class HomePage extends StatelessWidget {
                       Icon(Icons.event),
                       Container(
                         alignment: Alignment.centerLeft,
-                        width: 200,
+                        width: MediaQuery.of(context).size.width -160,
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) => EventInfo(document)),);
                           },
-                          child: Text("  " + document['Nome'] + "  ",
-                            style: new TextStyle(fontSize: 30.0, color: Colors.black),
-                            softWrap: false,
-                            overflow: TextOverflow.fade,
+                          child: AutoSizeText(document['Nome'] + "  ",
+                            textAlign: TextAlign.start,
+                            style: new TextStyle(fontSize: 25.0, color: Colors.black),
                           ),
                         ),
                       ),
                       Spacer(),
                       IconButton(
                         icon: Icon(Icons.edit, color: Colors.grey,),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => UpdateEvent(document)),
+                                  (route) => false);
+                        },
                       ),
                       IconButton(
                         icon: Icon(Icons.highlight_remove, color: Colors.red,),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            deleteAlert(context,document);
+                          });
+                        },
                       )
                     ],
                   ),
@@ -130,7 +152,6 @@ class HomePage extends StatelessWidget {
                           .toString()} - ${DateFormat('dd/MM/yyyy | HH:mm')
                           .format(document['Fim'].toDate())
                           .toString()}", style: TextStyle(fontSize: 16),),
-                      Spacer(),
                     ],
                   ),
                 ),
@@ -141,7 +162,6 @@ class HomePage extends StatelessWidget {
                       Text("Location: " + document['Local'] + "  ",
                         style: TextStyle(fontSize: 16),),
                       isVirtual(document['Virtual']),
-                      Spacer(),
                     ],
                   ),
                 )
@@ -150,6 +170,8 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
+    }else{
+      return Container();
     }
   }
 
@@ -159,5 +181,21 @@ class HomePage extends StatelessWidget {
     return Icon(Icons.wifi_off,size: 20,);
   }
 
+  void atualizarEstadoEventos(DocumentSnapshot document) {
+    final _now = DateTime.now();
+    if ( ((document['Fim'].toDate()).isBefore(_now)) && (!document['Terminou']) ){
+      Map<String,Object> map = new HashMap<String,Object>();
+      map.putIfAbsent("Terminou", () => true);
+      document.reference.update(map);
+    }
+    return;
+  }
+
+  Future<Widget> deleteAlert(BuildContext context, DocumentSnapshot event) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context)=> DeleteEvent(event).build(context)
+      );
+  }
 }
 

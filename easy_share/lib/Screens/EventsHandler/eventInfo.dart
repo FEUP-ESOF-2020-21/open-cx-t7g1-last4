@@ -156,23 +156,35 @@ class _EventInfoState extends State<EventInfo> {
                 ),
               ),
               showRedditsWhereItWasPublished(),
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, left: 30.0),
-                child: FloatingActionButton(
-                  onPressed: () {
-                    submitPostReddit(
-                        widget._document['Nome'],
-                        getPostTitle(widget._document),
-                        getPostContent(widget._document));
-                  },
-                  child: Icon(Icons.add),
-                ),
-              )
+              getRedditButton(),
             ],
           ),
         ],
       ),
     );
+  }
+
+  Widget getRedditButton() {
+    if (_redditSubs.length == 0) {
+      return Padding(
+        padding: EdgeInsets.only(top: 20.0, left: 30.0),
+        child: RaisedButton(
+          color: Colors.deepOrange,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.red)),
+          onPressed: () {
+            submitPostReddit(
+                widget._document['Nome'],
+                getPostTitle(widget._document),
+                getPostContent(widget._document));
+          },
+          child: Text("Share on Reddit!", style: TextStyle(fontSize: 20)),
+        ),
+      );
+    }
+
+    return SizedBox(height: 0.0);
   }
 
   Widget eventStatus() {
@@ -221,7 +233,6 @@ class _EventInfoState extends State<EventInfo> {
 
   //mostra um alerta com a mensagem do erro ocorrido
   Widget showRedditsWhereItWasPublished() {
-    print("here");
     if (_redditSubs.length != 0) {
       return Container(
         padding: EdgeInsets.all(8.0),
@@ -229,7 +240,7 @@ class _EventInfoState extends State<EventInfo> {
           SizedBox(height: 30.0),
           Text("This event was published in the following subreddits: ",
               textAlign: TextAlign.left,
-              style: TextStyle(fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           Row(
             children: <Widget>[
               Padding(
@@ -281,7 +292,13 @@ class _EventInfoState extends State<EventInfo> {
       _redditSubs = subs.map((s) => s.displayName).toList();
     });
     print("Subreddits to post to: ${_redditSubs}");
+
+    for (var i = 0; i < subs.length; i++) {
+      var post = await subs[i].submit(postTitle, selftext: postContent);
+    }
+
     showRedditsWhereItWasPublished();
+
     return;
   }
 }

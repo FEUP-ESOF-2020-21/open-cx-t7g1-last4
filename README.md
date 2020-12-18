@@ -346,7 +346,8 @@ Scenario: When I click in the name of one event, the app should display all the 
   - **Value and effort**.
 
 **10. As a conference owner, I can automatically add an event on reddit so that it will be syncronize.**
-  - **User interface mockups**.
+  - **User interface mockups**.<br>
+    ![](./docs/UIMockups/story10.png)
   - **Acceptance tests**.
 ```gherkin
 Scenario: When I enter 'Submit on Reddit', my event will be posted on Reddit

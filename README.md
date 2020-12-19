@@ -419,7 +419,8 @@ Use cross-links to the code repository and only embed real fragments of code whe
 ## Test
 
 Unit Tests:<br>
-In the Unit Tests we focused our tests on the features related to the insertion of a Profile (email and password) and on Events(title and location).<br>
+In the Unit Tests we focused our tests in textFields validators.<br>
+- Throw error message when leaving required inputs fields empty.
 
 ---
 ## Configuration and change management
